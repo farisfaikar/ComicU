@@ -13,6 +13,7 @@
         "autoprefixer": "^10.4.2",
         "axios": "^1.1.2",
         "daisyui": "^3.9.4",
+        "flowbite": "^2.1.1",
         "laravel-vite-plugin": "^0.8.0",
         "postcss": "^8.4.6",
         "prettier": "^3.0.3",
