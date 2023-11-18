@@ -3,7 +3,7 @@
         <h2 class="text-2xl font-bold">
             Create Comic
         </h2>
-        <form method="post" action="{{ route('comic.create') }}" enctype="multipart/form-data" class="w-full sm:w-full max-w-2xl">
+        <form method="post" action="{{ route('comic.store') }}" enctype="multipart/form-data" class="w-full sm:w max-w-2xl">
             @csrf
 
             <div class="mb-6">
@@ -12,7 +12,7 @@
             </div>
             <div class="mb-6">
                 <label for="inputSynopsis" class="block mb-2 text-md font-large text-gray-900 dark:text-white">Synopsis</label>
-                <textarea id="inputSynopsis" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter synopsis here" required></textarea>
+                <textarea id="inputSynopsis" name="synopsis" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter synopsis here" required></textarea>
             </div>
             <div class="mb-6">
                 <label for="inputAuthor" class="block mb-2 text-md font-large text-gray-900 dark:text-white">Author</label>
