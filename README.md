@@ -86,6 +86,10 @@ xdebug.mode=coverage ; for unit and feature testing
 ## Team Members (team 6)
 - Faris Faikar Razannafi
 - Aditya Eka Pradana Raharjo
+- 
+- 
+- Iskandar
+
 ### Code of Conduct
 
 In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
