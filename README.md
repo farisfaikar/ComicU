@@ -83,8 +83,12 @@ xdebug.mode=coverage ; for unit and feature testing
 4. Pull Request is tested by GitHub Actions (build, test, deploy)
 5. Pull Request merged repo owner (branch: main)
 
-## Team Members
+## Team Members (Team 6)
 - Faris Faikar Razannafi
+- Aditya Eka Pradana Raharjo
+- Julyana Fayumi Hidayat
+- Hasby Aiman
+- Iskandar
 
 ### Code of Conduct
 
