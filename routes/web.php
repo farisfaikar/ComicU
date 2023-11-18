@@ -19,10 +19,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 })->name('home');
-Route::get('/comic', function () {
-    return view('comic');
-})->name('comic');
-
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -31,7 +27,7 @@ Route::get('/dashboard', function () {
 Route::resource('/transaction', TransactionController::class);
 
 Route::middleware('auth')->group(function () {
-    Route::get('/comic', [ComicController::class, 'index'])->name('comic');
+    Route::get('/comic', [ComicController::class, 'index'])->name('comic.index');
     Route::put('/comic/update/{comic}', [ComicController::class,'update'])->name('comic.update');
     Route::post('/comic/store', [ComicController::class, 'store'])->name('comic.store');
     Route::get('/comic/create', [ComicController::class, 'create'])->name('comic.create');

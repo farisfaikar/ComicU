@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transaction;
-use App\Http\Requests\StoreTransactionRequest;
-use App\Http\Requests\UpdateTransactionRequest;
+use Illuminate\Http\Request;
+use App\Models\Comic;
+use App\Models\User;
 
 class TransactionController extends Controller
 {
@@ -13,7 +14,9 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        return view('transaction.index');
+        return view('transaction.index-transaction', [
+            'transactions' => Transaction::all(),
+        ]);
     }
 
     /**
@@ -21,15 +24,31 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        //
+        return view('transaction.create-transaction', [
+            'users' => User::all(),
+            'comics' => Comic::all(),
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreTransactionRequest $request)
+    public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'user_id' => 'required',
+            'comic_id' => 'required',
+        ]);
+        
+        $transaction = new Transaction();
+
+        $transaction->user_id = $validatedData['user_id'];
+        
+        $transaction->comic_id = $validatedData['comic_id'];
+        
+        $transaction->save();
+
+        return view('transactions.index');
     }
 
     /**
@@ -45,13 +64,15 @@ class TransactionController extends Controller
      */
     public function edit(Transaction $transaction)
     {
-        //
+        return view('transaction.edit-transaction', [
+            'transaction' => Transaction::find($transaction->id),
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTransactionRequest $request, Transaction $transaction)
+    public function update(Request $request, Transaction $transaction)
     {
         //
     }

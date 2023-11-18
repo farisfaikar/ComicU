@@ -11,6 +11,8 @@ class ComicController extends Controller
 {
     protected $comic;
 
+    protected $categories;
+
     /**
      * Display a listing of the resource.
      */
@@ -18,12 +20,21 @@ class ComicController extends Controller
     public function __construct(Comic $comic)
     {
         $this->comic = $comic;
+
+        // TODO: Replace this placeholder $categories array with categories model
+        $categories = [
+            0 => collect(['id' => 0, 'category_name' => 'Fantasy', 'color' => '123456']),
+            1 => collect(['id' => 1, 'category_name' => 'Thriller', 'color' => '000003']),
+            2 => collect(['id' => 2, 'category_name' => 'Action', 'color' => '000006']),
+        ];
+
+        $this->categories = collect($categories);
     }
 
     public function index()
     {
         $comics = Comic::all();
-        return view("comic.index", compact("comics"));
+        return view("comic.index-comic", compact("comics"));
     }
 
     /**
@@ -31,7 +42,11 @@ class ComicController extends Controller
      */
     public function create()
     {
-        return view("comic.add");
+        // $categories = Category::all();
+        
+        $categories = $this->categories;
+
+        return view("comic.create-comic", compact("categories"));
     }
 
     /**
@@ -44,12 +59,12 @@ class ComicController extends Controller
             'synopsis' => 'required',
             'author'=>'required',
             'stock'=>'required',
-            'category_id'=>'required'            
+            'category_id'=>'required'           
         ]);
         
         Comic::create($validatedata);
 
-        return redirect('/comic');
+        return redirect()->route('comic.index');
     }
 
     /**
@@ -66,7 +81,10 @@ class ComicController extends Controller
     public function edit(string $id)
     {
         $comic = Comic::find($id);
-        return view("comic.edit", compact("comic")) ;
+
+        $categories = $this->categories;
+
+        return view("comic.edit-comic", compact("comic", "categories"));
     }
 
     /**
@@ -83,15 +101,7 @@ class ComicController extends Controller
         $comic->category_id = $input['category_id'];
         $comic->save();
         
-        // $comics->update([
-        //     'comics_name' => $request->comics_name,
-        //     'synopsis' => $request->synopsis,
-        //     'author'=>$request->author,
-        //     'stock'=>$request->stock,
-        //     'category_id'=> $request->category_id
-        // ]);
-        
-        return redirect('/comic');
+        return redirect()->route('comic.index');
     }
 
     /**
@@ -101,6 +111,7 @@ class ComicController extends Controller
     {
         $comics = Comic::find($id);
         $comics->delete();
-        return redirect('/comic');  
+
+        return redirect()->route('comic.index');  
     }
 }
