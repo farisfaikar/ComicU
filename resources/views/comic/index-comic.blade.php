@@ -10,7 +10,7 @@
                 <!-- head -->
                 <thead>
                     <tr class="uppercase">
-                        <th>id</th>
+                        <th>no</th>
                         <th>comic name</th>
                         <th>synopsis</th>
                         <th>author</th>
