@@ -86,7 +86,7 @@ xdebug.mode=coverage ; for unit and feature testing
 ## Team Members (Team 6)
 - Faris Faikar Razannafi
 - Aditya Eka Pradana Raharjo
-- 
+- Julyana Fayumi Hidayat
 - Hasby Aiman
 - Iskandar
 
