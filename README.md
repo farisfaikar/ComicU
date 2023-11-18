@@ -83,6 +83,13 @@ xdebug.mode=coverage ; for unit and feature testing
 4. Pull Request is tested by GitHub Actions (build, test, deploy)
 5. Pull Request merged repo owner (branch: main)
 
+## Team Members (Team 6)
+- Faris Faikar Razannafi
+- Aditya Eka Pradana Raharjo
+- Julyana Fayumi Hidayat
+- Hasby Aiman
+- Iskandar
+
 ### Code of Conduct
 
 In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
