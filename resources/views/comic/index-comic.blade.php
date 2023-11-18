@@ -10,7 +10,7 @@
                 <!-- head -->
                 <thead>
                     <tr class="uppercase">
-                        <th>id</th>
+                        <th>no</th>
                         <th>comic name</th>
                         <th>synopsis</th>
                         <th>author</th>
@@ -20,12 +20,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @php
-                        $no = 1;
-                    @endphp
-                    @foreach ($comics as $comic)
+                    @forelse ($comics as $comic)
                         <tr>
-                            <td> {{ $no++ }} </td>
+                            <td> {{ $loop->iteration }} </td>
                             <td> {{ $comic->comic_name }} </td>
                             <td> {{ $comic->synopsis }}</td>
                             <td> {{ $comic->author }} </td>
@@ -40,7 +37,13 @@
                                 </form>
                             </td>
                         </tr>
-                    @endforeach
+                    @empty
+                        <tr>
+                            <td colspan="7" class="text-center">
+                                There are no comics.
+                            </td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>
