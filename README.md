@@ -84,11 +84,11 @@ xdebug.mode=coverage ; for unit and feature testing
 5. Pull Request merged repo owner (branch: main)
 
 ## Team Members (Team 6)
--
--
--julyana fayumi hidayat
--
--
+- Faris Faikar Razannafi
+- Aditya Eka Pradana Raharjo
+- Julyana Fayumi Hidayat
+- Hasby Aiman
+- Iskandar
 
 ### Code of Conduct
 
