@@ -3,7 +3,7 @@
         <h2 class="text-2xl font-bold">
             Edit Comic
         </h2>
-        <form method="post" action="{{ route('comic.update', 1) }}" enctype="multipart/form-data" class="w-full sm:w max-w-2xl">
+        <form method="post" action="{{ route('comic.update', $comic) }}" enctype="multipart/form-data" class="w-full sm:w max-w-2xl">
             @method('put')
             @csrf
 
