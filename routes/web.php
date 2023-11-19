@@ -31,7 +31,6 @@ Route::middleware('auth')->group(function () {
     Route::put('/comic/update/{comic}', [ComicController::class,'update'])->name('comic.update');
     Route::post('/comic/store', [ComicController::class, 'store'])->name('comic.store');
     Route::get('/comic/create', [ComicController::class, 'create'])->name('comic.create');
-    // Route::get('/comic/delete/{comic}', [ComicController::class, 'delete'])->name('comic.delete');
     Route::delete('/comic/delete/{id}', [ComicController::class, 'destroy'])->name('comic.destroy');
     Route::get('/comic/{id}', [ComicController::class,'edit'])->name('comic.edit');
     Route::patch('/comic/{id}', [ComicController::class,'update'])->name('comics.update');
