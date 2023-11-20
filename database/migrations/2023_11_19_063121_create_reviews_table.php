@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Comic;
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,16 +15,12 @@ return new class extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('comic_id');
+            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Comic::class)->constrained()->cascadeOnDelete();
             $table->string('title');
             $table->text('content');
             $table->integer('stars');
             $table->timestamps();
-
-            // foreign key constraint
-            $table->foreign('user_id')->references('id')->on('user');
-            $table->foreign('comic_id')->references('id')->on('comics');
         });
     }
 
