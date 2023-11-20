@@ -8,24 +8,24 @@
             @csrf
 
             <div class="mb-6">
-                <label for="inputComicName" class="block mb-2 text-md font-large text-gray-900 dark:text-white">Comic Name</label>
-                <input type="text" name="comic_name" id="inputComicName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{ $comic->comic_name }}" required>
+                <label for="inputComicName" class="block mb-2 text-md font-large text-neutral-900 dark:text-white">Comic Name</label>
+                <input type="text" name="comic_name" id="inputComicName" class="bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-neutral-700 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{ $comic->comic_name }}" required>
             </div>
             <div class="mb-6">
-                <label for="inputSynopsis" class="block mb-2 text-md font-large text-gray-900 dark:text-white">Synopsis</label>
-                <textarea id="inputSynopsis" name="synopsis" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>{{ $comic->synopsis }}</textarea>
+                <label for="inputSynopsis" class="block mb-2 text-md font-large text-neutral-900 dark:text-white">Synopsis</label>
+                <textarea id="inputSynopsis" name="synopsis" rows="4" class="block p-2.5 w-full text-sm text-neutral-900 bg-neutral-50 rounded-lg border border-neutral-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-neutral-700 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>{{ $comic->synopsis }}</textarea>
             </div>
             <div class="mb-6">
-                <label for="inputAuthor" class="block mb-2 text-md font-large text-gray-900 dark:text-white">Author</label>
-                <input type="text" name="author" id="inputAuthor" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{ $comic->author }}" required>
+                <label for="inputAuthor" class="block mb-2 text-md font-large text-neutral-900 dark:text-white">Author</label>
+                <input type="text" name="author" id="inputAuthor" class="bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-neutral-700 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{ $comic->author }}" required>
             </div>
             <div class="mb-6">
-                <label for="inputStock" class="block mb-2 text-md font-large text-gray-900 dark:text-white">stock</label>
-                <input type="number" name="stock" id="inputStock" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{ $comic->stock }}" required>
+                <label for="inputStock" class="block mb-2 text-md font-large text-neutral-900 dark:text-white">stock</label>
+                <input type="number" name="stock" id="inputStock" class="bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-neutral-700 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{ $comic->stock }}" required>
             </div>
             <div class="mb-6">
-                <label for="selectCategoryId" class="block mb-2 text-md font-large text-gray-900 dark:text-white">Category</label>
-                <select id="selectCategoryId" name="category_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <label for="selectCategoryId" class="block mb-2 text-md font-large text-neutral-900 dark:text-white">Category</label>
+                <select id="selectCategoryId" name="category_id" class="bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-neutral-700 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option value="" disabled selected>Choose a category</option>
                     @foreach ($categories as $category)
                         {{-- <option value="{{ $category->id }}">{{ $category->name }}</option> --}} <!-- TODO: Change to this when category crud is complete -->
