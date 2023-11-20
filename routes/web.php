@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\ComicController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,9 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -32,7 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/comic/update/{comic}', [ComicController::class,'update'])->name('comic.update');
     Route::post('/comic/store', [ComicController::class, 'store'])->name('comic.store');
     Route::get('/comic/create', [ComicController::class, 'create'])->name('comic.create');
-    Route::delete('/comic/{id}', [ComicController::class,'destroy'])->name('comic.destroy');
+    Route::delete('/comic/delete/{id}', [ComicController::class, 'destroy'])->name('comic.destroy');
     Route::get('/comic/{id}', [ComicController::class,'edit'])->name('comic.edit');
     Route::patch('/comic/{id}', [ComicController::class,'update'])->name('comics.update');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

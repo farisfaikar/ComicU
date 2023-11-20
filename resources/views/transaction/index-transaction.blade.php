@@ -2,7 +2,9 @@
     <section class="p-5">
         <div class="flex justify-between items-center w-full">
             <h2 class="text-2xl font-bold">Transaction List</h2>
-            <a href="{{ route('transaction.create') }}" class="btn btn-primary">Create Transaction</a>
+            <a href="{{ route('transaction.create') }}" type="button" class="focus:outline-none text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">
+                Create Transaction
+            </a>
         </div>
 
         <div class="overflow-x-auto">
@@ -24,10 +26,18 @@
                                 {{ $transaction->id }}
                             </td>
                             <td>
-                                {{ $transaction->user_id }}
+                                @if ($transaction->user_id !== null)
+                                    <p>{{ $transaction->user->name }}</p>
+                                @else
+                                    No user.
+                                @endif
                             </td>
                             <td>
-                                {{ $transaction->comic_id }}
+                                @if ($transaction->comic_id !== null)
+                                    <p>{{ $transaction->comic->comic_name }}</p>
+                                @else
+                                    No comic.
+                                @endif
                             </td>
                             <td>
                                 {{ $transaction->created_at->diffForHumans() }}
