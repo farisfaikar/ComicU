@@ -17,7 +17,11 @@ class ComicFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'comic_name' => fake()->name(),
+            'synopsis' => fake()->realTextBetween(500, 1000),
+            'author' => fake()->name(),
+            'stock' => fake()->numberBetween(0, 100),
+            'category_id' => fake()->numberBetween(0, 1),
         ];
     }
 }
