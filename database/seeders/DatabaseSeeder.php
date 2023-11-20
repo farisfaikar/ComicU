@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             ComicSeeder::class,
             TransactionSeeder::class,
+            ReviewSeeder::class,
         ]);
     }
 }

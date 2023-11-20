@@ -14,27 +14,28 @@ class ReviewSeeder extends Seeder
      */
     public function run(): void
     {
-        //
-        Review::created([
+        Review::create([
             'user_id'   => 1,
             'comic_id'  => 1,
             'title'     => 'One Piece',
             'content'   => 'Sangat bagus lah ',
             'stars'     => 5,
         ]);
-        Review::created([
+        Review::create([
             'user_id'   => 1,
             'comic_id'  => 2,
             'title'     => 'Detektif Konan',
             'content'   => 'Lumayan Bagus ',
             'stars'     => 4,
         ]);
-        Review::created([
+        Review::create([
             'user_id'   => 1,
             'comic_id'  => 3,
             'title'     => 'Tobang',
-            'content'   => 'Jelek Amat Anjirrrr ko wkwk mending gausah buat komik haha',
+            'content'   => 'Jelek Amat wkwk mending gausah buat komik haha',
             'stars'     => 4,
         ]);
+
+        Review::factory(10)->create();
     }
 }

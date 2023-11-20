@@ -5,9 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Review;
 
-
-
-
 class ReviewController extends Controller
 {
     public function index()
@@ -23,17 +20,18 @@ class ReviewController extends Controller
 
     public function store(Request $request)
     {
-        $validatedRequest = $request->validate([   
-        'user_id' => 'required',
-        'comic_id' => 'required',
-        'title' => 'required',
-        'content' => 'required',
-        'stars' => 'required',
-    ]);
+        $validatedRequest = $request->validate([
+            'user_id' => 'required',
+            'comic_id' => 'required',
+            'title' => 'required',
+            'content' => 'required',
+            'stars' => 'required',
+        ]);
 
         Review::create($validatedRequest);
 
-        return redirect()->route('review.index')
+        return redirect()
+            ->route('review.index')
             ->with('success', 'Review created successfully.');
     }
 
@@ -48,25 +46,25 @@ class ReviewController extends Controller
 
     public function update(Request $request, Review $review)
     {
-        $validatedRequest = $request->validate([   
+        $validatedRequest = $request->validate([
             'user_id' => 'required',
             'comic_id' => 'required',
             'title' => 'required',
             'content' => 'required',
             'stars' => 'required',
         ]);
-    
+
         $review->update($validatedRequest);
-    
+
         return redirect()->route('review.index');
     }
-    
 
     public function destroy(Review $review)
     {
         $review->delete();
 
-        return redirect()->route('review.index')
+        return redirect()
+            ->route('review.index')
             ->with('success', 'Review deleted successfully.');
     }
 }
