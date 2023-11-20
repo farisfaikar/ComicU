@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\ComicController;
@@ -25,6 +26,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::resource('/transaction', TransactionController::class);
+Route::resource('/category', CategoryController::class);
 
 Route::middleware('auth')->group(function () {
     Route::get('/comic', [ComicController::class, 'index'])->name('comic.index');
