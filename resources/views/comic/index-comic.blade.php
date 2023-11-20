@@ -26,7 +26,7 @@
                         <tr>
                             <td> {{ $loop->iteration }} </td>
                             <td> {{ $comic->comic_name }} </td>
-                            <td>{{ strlen($comic->synopsis) > 100 ? substr($comic->synopsis, 0, 100) . '...' : $comic->synopsis }}</td>
+                            <td> {{ strlen($comic->synopsis) > 100 ? substr($comic->synopsis, 0, 100) . '...' : $comic->synopsis }} </td>
                             <td> {{ $comic->author }} </td>
                             <td class="text-center"> {{ $comic->stock }}</td>
                             <td class="text-center"> {{ $comic->category_id }}</td>
