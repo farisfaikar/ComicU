@@ -7,24 +7,24 @@
             @csrf
 
             <div class="mb-6">
-                <label for="inputComicName" class="block mb-2 text-md font-large text-gray-900 dark:text-white">Comic Name</label>
-                <input type="text" name="comic_name" id="inputComicName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter comic name here" required>
+                <label for="inputComicName" class="block mb-2 text-md font-large text-neutral-900 dark:text-white">Comic Name</label>
+                <input type="text" name="comic_name" id="inputComicName" class="bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-neutral-700 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter comic name here" required>
             </div>
             <div class="mb-6">
-                <label for="inputSynopsis" class="block mb-2 text-md font-large text-gray-900 dark:text-white">Synopsis</label>
-                <textarea id="inputSynopsis" name="synopsis" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter synopsis here" required></textarea>
+                <label for="inputSynopsis" class="block mb-2 text-md font-large text-neutral-900 dark:text-white">Synopsis</label>
+                <textarea id="inputSynopsis" name="synopsis" rows="4" class="block p-2.5 w-full text-sm text-neutral-900 bg-neutral-50 rounded-lg border border-neutral-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-neutral-700 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter synopsis here" required></textarea>
             </div>
             <div class="mb-6">
-                <label for="inputAuthor" class="block mb-2 text-md font-large text-gray-900 dark:text-white">Author</label>
-                <input type="text" name="author" id="inputAuthor" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter author here" required>
+                <label for="inputAuthor" class="block mb-2 text-md font-large text-neutral-900 dark:text-white">Author</label>
+                <input type="text" name="author" id="inputAuthor" class="bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-neutral-700 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter author here" required>
             </div>
             <div class="mb-6">
-                <label for="inputStock" class="block mb-2 text-md font-large text-gray-900 dark:text-white">Stock</label>
-                <input type="number" name="stock" min="0" id="inputStock" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter stock here" required>
+                <label for="inputStock" class="block mb-2 text-md font-large text-neutral-900 dark:text-white">Stock</label>
+                <input type="number" name="stock" min="0" id="inputStock" class="bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-neutral-700 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter stock here" required>
             </div>
             <div class="mb-6">
-                <label for="categoryId" class="block mb-2 text-md font-large text-gray-900 dark:text-white">Category</label>
-                <select id="categoryId" name="category_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <label for="categoryId" class="block mb-2 text-md font-large text-neutral-900 dark:text-white">Category</label>
+                <select id="categoryId" name="category_id" class="bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-neutral-700 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option value="" disabled selected>Choose a category</option>
                     @foreach ($categories as $category)
                         <option value="{{ $category['id'] }}">{{ $category['category_name'] }}</option>

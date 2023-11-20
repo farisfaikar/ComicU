@@ -14,12 +14,13 @@ class ComicSeeder extends Seeder
     public function run(): void
     {
         $comic = new Comic();
-        $comic->comic_name = "jujutsu kaisen";
-        $comic->synopsis = "ada seorang anak sebatang kara";
-        $comic->author = "hajime";
+        $comic->comic_name = "Jujutsu Kaisen";
+        $comic->synopsis = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lacinia tellus eros, sit amet pharetra elit luctus eu. Proin in orci quis tortor dictum aliquet. Suspendisse potenti. Cras consectetur eros malesuada sagittis placerat. In sed pellentesque lacus. Proin malesuada lacus et leo eleifend, eget imperdiet arcu feugiat. Cras accumsan sodales ultrices. Integer pellentesque vel vulputate erat consectetur, sed congue nunc posuere. Proin congue orci dolor, vel semper tellus lobortis et. Suspendisse ultrices neque at pellentesque commodo. Proin eu ipsum sodales, facilisis libero et, consectetur ex.";
+        $comic->author = "Hajime";
         $comic->stock = 200;
         $comic->category_id = 1;
         $comic->save();
-        
+
+        Comic::factory(10)->create();
     }
 }

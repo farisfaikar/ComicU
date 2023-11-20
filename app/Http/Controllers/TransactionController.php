@@ -16,6 +16,8 @@ class TransactionController extends Controller
     {
         return view('transaction.index-transaction', [
             'transactions' => Transaction::all(),
+            'users' => User::all(),
+            'comics' => Comic::all(),
         ]);
     }
 
