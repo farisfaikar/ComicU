@@ -59,16 +59,20 @@
             </div>
 
             <div class="mt-10 grid grid-cols-1 lg:grid-cols-4 sm:grid-cols-2 md:grid-cols-3 gap-10">
-                @for ($i = 0; $i < 8; $i++)
+                @foreach ($comics as $comic)
                     <div class="max-w-sm bg-neutral-900 border border-neutral-800 rounded-lg shadow">
                         <a href="#">
                             <img class="rounded-t-lg" src="https://source.unsplash.com/400x200" alt="..." />
                         </a>
                         <div class="p-5">
                             <a href="#">
-                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-neutral-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
+                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-neutral-900 dark:text-white">
+                                    {{ $comic->comic_name }}
+                                </h5>
                             </a>
-                            <p class="mb-3 font-normal text-neutral-700 dark:text-neutral-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                            <p class="mb-3 font-normal text-neutral-700 dark:text-neutral-400">
+                                {{ strlen($comic->synopsis) > 100 ? substr($comic->synopsis, 0, 100) . '...' : $comic->synopsis }}
+                            </p>
                             <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-yellow-700 rounded-lg hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">
                                 Read more
                                 <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
@@ -77,7 +81,7 @@
                             </a>
                         </div>
                     </div>
-                @endfor
+                @endforeach
             </div>
         </div>
     </div>
