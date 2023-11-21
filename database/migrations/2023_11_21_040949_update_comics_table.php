@@ -11,13 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('comics', function (Blueprint $table) {
-            $table->id();
-            $table->string('comic_name');
-            $table->text('synopsis');
-            $table->string('author');
-            $table->integer('stock');
-            $table->timestamps();
+        Schema::table('comics', function (Blueprint $table) {
+            $table->foreignId('category_id')->after('stock')->constrained('categories','id');
         });
     }
 
@@ -26,6 +21,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('comics');
+        //
     }
 };
