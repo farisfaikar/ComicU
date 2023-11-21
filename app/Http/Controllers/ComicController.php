@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Comic;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreComicRequest;
@@ -11,24 +12,17 @@ class ComicController extends Controller
 {
     protected $comic;
 
-    protected $categories;
+    protected $category;
 
     /**
      * Display a listing of the resource.
      */
 
-    public function __construct(Comic $comic)
+    public function __construct(Comic $comic, Category $category)
     {
         $this->comic = $comic;
 
-        // TODO: Replace this placeholder $categories array with categories model
-        $categories = [
-            0 => collect(['id' => 0, 'category_name' => 'Fantasy', 'color' => '123456']),
-            1 => collect(['id' => 1, 'category_name' => 'Thriller', 'color' => '000003']),
-            2 => collect(['id' => 2, 'category_name' => 'Action', 'color' => '000006']),
-        ];
-
-        $this->categories = collect($categories);
+        $this->category = $category;
     }
 
     public function index()
@@ -42,9 +36,7 @@ class ComicController extends Controller
      */
     public function create()
     {
-        // $categories = Category::all();
-        
-        $categories = $this->categories;
+        $categories = $this->category->all();
 
         return view("comic.create-comic", compact("categories"));
     }
@@ -82,7 +74,7 @@ class ComicController extends Controller
     {
         $comic = Comic::find($id);
 
-        $categories = $this->categories;
+        $categories = $this->category->all();
 
         return view("comic.edit-comic", compact("comic", "categories"));
     }
