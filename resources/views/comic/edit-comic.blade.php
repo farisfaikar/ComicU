@@ -28,8 +28,7 @@
                 <select id="selectCategoryId" name="category_id" class="bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-neutral-700 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option value="" disabled selected>Choose a category</option>
                     @foreach ($categories as $category)
-                        {{-- <option value="{{ $category->id }}">{{ $category->name }}</option> --}} <!-- TODO: Change to this when category crud is complete -->
-                        <option value="{{ $category['id'] }}">{{ $category['category_name'] }}</option>
+                        <option value="{{ $category->id }}" {{ $category->id === $comic->category_id ? 'selected' : '' }}>{{ $category->category_name }}</option>
                     @endforeach
                 </select>
             </div>
