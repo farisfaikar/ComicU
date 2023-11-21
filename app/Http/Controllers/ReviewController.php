@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Comic;
 use App\Models\Review;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+
 
 class ReviewController extends Controller
 {
@@ -15,7 +19,10 @@ class ReviewController extends Controller
 
     public function create()
     {
-        return view('review.create-review');
+        $users = User::all();
+        $comics = Comic::all();
+
+        return view('review.create-review', compact('users', 'comics'));
     }
 
     public function store(Request $request)
