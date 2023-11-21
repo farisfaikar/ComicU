@@ -104,6 +104,17 @@ class ComicController extends Controller
         return redirect()->route('comic.index');
     }
 
+    public function search(Request $request, Comic $comic){
+        if($request->has('search')){
+            $comic = comic::where('comic_name','LIKE', '%'.$request->search . '%')->get();
+        }
+        else {
+            $comic = comic::all();
+        }
+        
+        return view('comic.index-comic',['comics'=>$comic]);
+    
+    }
     /**
      * Remove the specified resource from storage.
      */
