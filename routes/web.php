@@ -25,10 +25,9 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::resource('/transaction', TransactionController::class);
-Route::resource('/category', CategoryController::class);
-
 Route::middleware('auth')->group(function () {
+    Route::resource('/transaction', TransactionController::class);
+    Route::resource('/category', CategoryController::class);
     Route::get('/comic', [ComicController::class, 'index'])->name('comic.index');
     Route::put('/comic/update/{comic}', [ComicController::class,'update'])->name('comic.update');
     Route::post('/comic/store', [ComicController::class, 'store'])->name('comic.store');
