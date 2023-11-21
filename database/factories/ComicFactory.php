@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -21,7 +22,7 @@ class ComicFactory extends Factory
             'synopsis' => fake()->realTextBetween(500, 1000),
             'author' => fake()->name(),
             'stock' => fake()->numberBetween(0, 100),
-            'category_id' => fake()->numberBetween(0, 1),
+            'category_id' => Category::inRandomOrder()->first()->id,
         ];
     }
 }
