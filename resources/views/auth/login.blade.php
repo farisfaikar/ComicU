@@ -2,9 +2,13 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
-
+<div class="card w-100 bg-amber-900">
+  <figure><img src="{{ asset('img/comicu-logo.png') }} "width="150" alt=""/></figure>
+  <div class="card-body">
+    
+      <form method="POST" action="{{ route('login') }}">
+          @csrf
+          
         <!-- Email Address -->
         <div>
             <x-input-label for="email" :value="__('Email')" />
@@ -34,14 +38,16 @@
 
         <div class="flex items-center justify-end mt-4">
             @if (Route::has('password.request'))
-                <a class="underline text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-neutral-800" href="{{ route('password.request') }}">
+            <a class="underline text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-neutral-800" href="{{ route('password.request') }}">
                     {{ __('Forgot your password?') }}
                 </a>
             @endif
-
+            
             <x-primary-button class="ms-3">
                 {{ __('Log in') }}
             </x-primary-button>
         </div>
     </form>
+</div>
+</div>
 </x-guest-layout>

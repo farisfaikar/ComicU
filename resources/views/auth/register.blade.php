@@ -1,6 +1,11 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
+<div class="card w-100 bg-amber-900 ">
+  <figure><img src="{{ asset('img/comicu-logo.png') }} "width="130" alt=""/></figure>
+  <div class="card-body">
+    
+  
+      <form method="POST" action="{{ route('register') }}">
+          @csrf
 
         <!-- Name -->
         <div>
@@ -21,7 +26,7 @@
             <x-input-label for="password" :value="__('Password')" />
 
             <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
+            type="password"
                             name="password"
                             required autocomplete="new-password" />
 
@@ -43,10 +48,12 @@
             <a class="underline text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-neutral-800" href="{{ route('login') }}">
                 {{ __('Already registered?') }}
             </a>
-
+            
             <x-primary-button class="ms-4">
                 {{ __('Register') }}
             </x-primary-button>
         </div>
     </form>
+</div>
+</div>
 </x-guest-layout>
