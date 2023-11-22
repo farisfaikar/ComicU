@@ -17,7 +17,7 @@
     <body class="font-sans text-neutral-900 antialiased bg-neutral-950">
         <div class="bg-neutral-950 flex justify-center">
             <div class="flex items-center py-2 px-6 lg:px-8 max-w-7xl justify-between w-full">
-                <a class="btn btn-ghost text-xl">
+                <a href="{{ route('home') }}" class="flex justify-center align-center text-xl">
                     <x-application-logo class="h-16 w-16" />
                 </a>
                 <div class="flex items-center gap-5">
@@ -36,7 +36,7 @@
                 </div>
             </div>
         </div>
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-neutral-950">
+        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-neutral-300">
             {{ $slot }}
         </div>
 

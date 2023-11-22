@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <div class="relative min-h-screen bg-dots-darker bg-center bg-neutral-950 selection:bg-neutral-500 selection:text-white">
+    <div class="relative min-h-screen bg-dots-darker bg-center selection:bg-neutral-500 selection:text-white">
         <div class="max-w-7xl mx-auto p-6 lg:p-8">
             <div class="flex justify-center">
             </div>
