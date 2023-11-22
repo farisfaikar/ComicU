@@ -7,9 +7,13 @@ use App\Models\Review;
 
 class ReviewController extends Controller
 {
+    public function __construct(Review $review){
+        $this->review=$review;
+    } 
+
     public function index()
     {
-        $reviews = Review::all();
+        $reviews = Review::paginate(10);
         return view('review.index-review', compact('reviews'));
     }
 
@@ -37,6 +41,7 @@ class ReviewController extends Controller
 
     public function show(Review $review)
     {
+        //
     }
 
     public function edit(Review $review)
@@ -66,5 +71,17 @@ class ReviewController extends Controller
         return redirect()
             ->route('review.index')
             ->with('success', 'Review deleted successfully.');
+    }
+        
+    public function search(Request $request, Review $review){
+        if($request->has('search')){
+            $review = review::where('title','LIKE', '%'.$request->search . '%')->paginate(10);
+        }
+        else {
+            $review = review::all();
+        }
+        
+        return view('review.index-review',['reviews'=>$review]);
+    
     }
 }
