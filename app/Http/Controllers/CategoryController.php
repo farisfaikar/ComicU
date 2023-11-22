@@ -28,14 +28,13 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+
     public function store(Request $request)
     {
-        // dd('hello');
         Category::create($request->all());
 
         return redirect('category')->with('msg', 'Kategori berhasil ditambahkan.');
     }
-
 
     /**
      * Display the specified resource.
@@ -61,7 +60,7 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $category->update($request->all());
-        return redirect()->route('category.index')->with('success', 'Kategori berhasil diperbarui.');
+        return redirect()->route('category.index')->with('success', 'Category berhasil diperbarui.');
     }
 
     /**
@@ -73,6 +72,6 @@ class CategoryController extends Controller
 
         $comic -> delete();
 
-        return redirect()->route('category.index')->with('success', 'category deleted successfully');
+        return redirect()->route('category.index')->with('success', 'Category deleted successfully');
     }
 }
