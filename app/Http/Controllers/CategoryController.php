@@ -33,7 +33,7 @@ class CategoryController extends Controller
     {
         Category::create($request->all());
 
-        return redirect('category')->with('msg', 'Kategori berhasil ditambahkan.');
+        return redirect('category')->with('success', 'Category created successfully.');
     }
 
     /**
@@ -60,7 +60,7 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $category->update($request->all());
-        return redirect()->route('category.index')->with('success', 'Category berhasil diperbarui.');
+        return redirect()->route('category.index')->with('success', 'Category updated successfully.');
     }
 
     /**
