@@ -1,5 +1,5 @@
 <x-guest-layout>
-<div class="card w-100 bg-amber-900 ">
+<div class="card w-100 bg-neutral-800 ">
   <figure><img src="{{ asset('img/comicu-logo.png') }} "width="130" alt=""/></figure>
   <div class="card-body">
     
