@@ -2,7 +2,7 @@
     <section class="p-5">
         <div class="flex justify-between items-center w-full">
             <h2 class="text-2xl font-bold">Comic List</h2>
-            <form action="{{ route('comic.search') }}" method="get">   
+            <form action="{{ route('comic.search') }}" method="get">
                 <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
                 <div class="flex ">
                     <input type="search" name="search" id="search" class="bg-black input input-bordered mr-1" placeholder="Search" required>
@@ -31,7 +31,7 @@
                 <tbody>
                     @forelse ($comics as $key => $comic)
                         <tr>
-                            <td> {{$comics-> firstitem()+ $key }} </td>
+                            <td> {{ $comics->firstitem() + $key }} </td>
                             <td> {{ $comic->comic_name }} </td>
                             <td> {{ strlen($comic->synopsis) > 100 ? substr($comic->synopsis, 0, 100) . '...' : $comic->synopsis }} </td>
                             <td> {{ $comic->author }} </td>
@@ -97,9 +97,9 @@
                     @endforelse
                 </tbody>
             </table>
-            <div>
-                {{ $comics->links() }}
-            </div>
+        </div>
+        <div class="mt-5">
+            {{ $comics->links() }}
         </div>
     </section>
 </x-app-layout>
