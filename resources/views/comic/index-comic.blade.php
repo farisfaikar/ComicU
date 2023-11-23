@@ -18,7 +18,7 @@
             <table class="table table-auto">
                 <!-- head -->
                 <thead>
-                    <tr class="uppercase">
+                    <tr class="uppercase text-neutral-600">
                         <th>no</th>
                         <th>comic name</th>
                         <th>synopsis</th>
@@ -45,7 +45,7 @@
                             </td>
                             <td class="text-center">
                                 <div class="flex flex-col gap-2 md:flex-row justify-center items-center">
-                                    <a href="{{ route('comic.edit', $comic->id) }}" type="button" class="text-gray-900 hover:text-white hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800">
+                                    <a href="{{ route('comic.edit', $comic->id) }}" type="button" class="text-neutral-900 hover:text-white hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800">
                                         Edit
                                     </a>
 
