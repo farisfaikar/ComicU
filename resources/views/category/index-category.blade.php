@@ -2,12 +2,19 @@
     <section class="p-5">
         <div class="flex justify-between items-center w-full">
             <h2 class="text-2xl font-bold">Categories List</h2>
+            <form action="{{ route('category.search') }}" method="get">   
+                <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                <div class="flex ">
+                    <input type="search" name="search" id="search" class="bg-black input input-bordered mr-1" placeholder="Search" required>
+                    <button type="submit" class="text-red-700 hover:text-white border border-blue-700 hover:bg-black-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-b-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-600 dark:focus:ring-blue-900">Search</button>
+                </div>
+            </form>
             <a href="{{ route('category.create') }}" type="button"
                 class="focus:outline-none text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">
                 Create Categories
             </a>
         </div>
-
+      
         <div class="overflow-x-auto mt-5">
             <table class="table table-auto">
                 <!-- head -->
@@ -20,19 +27,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($categories as $item)
+                    @forelse ($categories as $key => $category)
                     <tr>
-                        <th>{{ $loop->iteration }}</th>
-                        <th>{{ $item->category_name }}</th>
-                        <th>{{ $item->color }}</th>
+                        <th>{{ $categories-> firstitem() + $key }}</th>
+                        <th>{{ $category->category_name }}</th>
+                        <th>{{ $category->color }}</th>
                             <td class="text-center">
                                 <div class="flex flex-col sm:flex-row justify-end items-center gap-2 text-centerr">
-                                    <a href="{{ route('category.edit', $item->id) }}" type="button"
+                                    <a href="{{ route('category.edit', $category->id) }}" type="button"
                                         class="text-gray-900 hover:text-white hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800">
                                         Edit
                                     </a>
 
-                                    <form action="{{ route('category.destroy', $item->id) }}" method="post">
+                                    <form action="{{ route('category.destroy', $category->id) }}" method="post">
                                         <button data-modal-target="static-modal-{{ $loop->iteration }}"
                                             data-modal-toggle="static-modal-{{ $loop->iteration }}"
                                             class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900"
@@ -69,7 +76,7 @@
                                     </div>
                                     <!-- Modal footer -->
                                     <div class="flex items-center p-4 md:p-5">
-                                        <form action={{ route('category.destroy', $item->id) }} method="post">
+                                        <form action={{ route('category.destroy', $category->id) }}" method="post">
                                             @method('delete')
                                             @csrf
                                             <button data-modal-hide="static-modal-{{ $loop->iteration }}"
@@ -90,8 +97,9 @@
                     @endforelse
                 </tbody>
             </table>
+            <div>
+                {{ $categories->links() }}
+            </div>
         </div>
     </section>
-
-
 </x-app-layout>
