@@ -26,6 +26,13 @@ Route::middleware('auth')->group(function () {
     Route::resource('/transaction', TransactionController::class);
     Route::resource('/category', CategoryController::class);
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::post('/category/store', [CategoryController::class, 'store'])->name('category.store');
+    Route::delete('/category/{category}', [categoryController::class, 'destroy'])->name('category.destroy');
+    Route::get('/category/create', [CategoryController::class, 'create'])->name('category.create');
+    Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
+    Route::put('/category/update/{category}', [CategoryController::class, 'update'])->name('category.update');
+    Route::get('/category/{category}/edit', [CategoryController::class, 'edit'])->name('category.edit');
+    Route::get('/category/search', [CategoryController::class,'search'])->name('category.search');
     Route::get('/comic', [ComicController::class, 'index'])->name('comic.index');
     Route::put('/comic/update/{comic}', [ComicController::class,'update'])->name('comic.update');
     Route::post('/comic/store', [ComicController::class, 'store'])->name('comic.store');
@@ -39,9 +46,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/review', [ReviewController::class, 'index'])->name('review.index');
     Route::get('/review/create', [ReviewController::class, 'create'])->name('review.create');
     Route::post('/review', [ReviewController::class, 'store'])->name('review.store');
-    Route::get('/review/{review}', [ReviewController::class, 'show'])->name('review.show');
     Route::get('/review/{review}/edit', [ReviewController::class, 'edit'])->name('review.edit');
-    Route::put('/review/{review}', [ReviewController::class, 'update'])->name('review.update');
+    Route::get('/review/search', [ReviewController::class,'search'])->name('review.search');
+    Route::put('/review/update/{review}', [ReviewController::class, 'update'])->name('review.update');
     Route::delete('/review/{review}', [ReviewController::class, 'destroy'])->name('review.destroy');
 });
 

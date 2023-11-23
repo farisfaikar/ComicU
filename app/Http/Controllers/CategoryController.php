@@ -9,12 +9,15 @@ use App\Http\Requests\UpdatecategoryRequest;
 
 class CategoryController extends Controller
 {
+    public function __construct(category $category){
+        $this->category=$category;
+    } 
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::paginate(10);
         return view("category.index-category", compact("categories"));
     }
 
@@ -25,6 +28,7 @@ class CategoryController extends Controller
     {
         return view('category.create-category');
     }
+
     /**
      * Store a newly created resource in storage.
      */
@@ -33,7 +37,7 @@ class CategoryController extends Controller
         // dd('hello');
         Category::create($request->all());
 
-        return redirect('category')->with('msg', 'Kategori berhasil ditambahkan.');
+        return redirect('category')->with('success', 'Category added successfully.');
     }
 
 
@@ -61,7 +65,7 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $category->update($request->all());
-        return redirect()->route('category.index')->with('success', 'Kategori berhasil diperbarui.');
+        return redirect()->route('category.index')->with('success', 'Category updated successfully.');
     }
 
     /**
@@ -69,10 +73,22 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $comic = Category::findOrFail($id);
+        $category = Category::findOrFail($id);
 
-        $comic -> delete();
+        $category -> delete();
 
         return redirect()->route('category.index')->with('success', 'category deleted successfully');
+    }
+
+    public function search(Request $request, category $category){
+        if($request->has('search')){
+            $category = Category::where('category_name','LIKE', '%'.$request->search . '%')->paginate(10);
+        }
+        else {
+            $category = Category::all();
+        }
+        
+        return view('category.index-category',['categories'=>$category]);
+    
     }
 }
