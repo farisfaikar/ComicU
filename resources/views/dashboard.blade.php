@@ -6,56 +6,39 @@
     </x-slot>
 
     <section class="py-5 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-7xl mx-auto pb-5">
+        <!-- This should be an alert -->
+        {{-- <div class="max-w-7xl mx-auto pb-5">
             <div class="bg-white dark:bg-neutral-900 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-neutral-900 dark:text-neutral-100">
                     {{ __("You're logged in!") }}
                 </div>
             </div>
-        </div>
-        <div class="w-full bg-white">
+        </div> --}}
+        <div class="w-full">
             <!-- Statistics Chart -->
             <div class="w-full bg-white rounded-lg shadow dark:bg-neutral-900 p-4 md:p-6">
                 <div class="flex justify-between mb-5">
-                    <div>
+                    <div class="w-full">
                         <h5 class="leading-none text-3xl font-bold text-neutral-900 dark:text-white pb-2">
-                            {{ array_sum($comicsAddedData) }}
+                            This week's statistics
                         </h5>
-                        <p class="text-base font-normal text-neutral-500 dark:text-neutral-400">Books Added This Week</p>
-                    </div>
-                </div>
-                <div id="grid-chart"></div>
-                <div class="grid grid-cols-1 items-center border-neutral-200 border-t dark:border-neutral-700 justify-between mt-5">
-                    <div class="flex justify-between items-center pt-5">
-                        <!-- Button -->
-                        <button id="dropdownDefaultButton" data-dropdown-toggle="lastDaysdropdown" data-dropdown-placement="bottom" class="text-sm font-medium text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 text-center inline-flex items-center dark:hover:text-white" type="button">
-                            Last 7 days
-                            <svg class="w-2.5 m-2.5 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
-                            </svg>
-                        </button>
-                        <!-- Dropdown menu -->
-                        <div id="lastDaysdropdown" class="z-10 hidden bg-white divide-y divide-neutral-100 rounded-lg shadow w-44 dark:bg-neutral-700">
-                            <ul class="py-2 text-sm text-neutral-700 dark:text-neutral-200" aria-labelledby="dropdownDefaultButton">
-                                <li>
-                                    <a href="#" class="block px-4 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-600 dark:hover:text-white">Yesterday</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="block px-4 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-600 dark:hover:text-white">Today</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="block px-4 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-600 dark:hover:text-white">Last 7 days</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="block px-4 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-600 dark:hover:text-white">Last 30 days</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="block px-4 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-600 dark:hover:text-white">Last 90 days</a>
-                                </li>
-                            </ul>
+                        <div class="flex justify-between w-full gap-5 mt-2">
+                            <div class="bg-neutral-800 p-5 rounded w-full">
+                                <p class="text-base font-normal text-neutral-500 dark:text-neutral-400">Total Comics Added</p>
+                                <h5 class="leading-none text-3xl font-bold text-neutral-900 dark:text-white pb-2">
+                                    {{ array_sum($comicsAddedData) }}
+                                </h5>
+                            </div>
+                            <div class="bg-neutral-800 p-5 rounded w-full">
+                                <p class="text-base font-normal text-neutral-500 dark:text-neutral-400">Total Transactions Created</p>
+                                <h5 class="leading-none text-3xl font-bold text-neutral-900 dark:text-white pb-2">
+                                    {{ array_sum($transactionsAddedData) }}
+                                </h5>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <div id="grid-chart"></div>
             </div>
 
             <script>
@@ -73,15 +56,14 @@
                             },
                         },
                         series: [{
-                                name: "Comics Added",
-                                data: @json($comicsAddedData),
-                                color: "#991d20",
-                            }, {
-                                name: "Transactions Created",
-                                data: @json($transactionsAddedData),
-                                color: "#d9b42e"
-                            }
-                        ],
+                            name: "Comics Added",
+                            data: @json($comicsAddedData),
+                            color: "#991d20",
+                        }, {
+                            name: "Transactions Created",
+                            data: @json($transactionsAddedData),
+                            color: "#d9b42e"
+                        }],
                         chart: {
                             height: "100%",
                             maxWidth: "100%",
@@ -149,7 +131,7 @@
                 });
             </script>
         </div>
-        <div class="mt-10 grid grid-cols-1 lg:grid-cols-4 sm:grid-cols-2 md:grid-cols-3 gap-10">
+        <div class="mt-5 grid grid-cols-1 lg:grid-cols-4 sm:grid-cols-2 md:grid-cols-3 gap-5">
             <!-- Comic -->
             <div class="max-w-sm bg-neutral-900 border border-neutral-800 rounded-lg shadow">
                 <div class="p-5">
