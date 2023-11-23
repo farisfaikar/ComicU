@@ -21,8 +21,8 @@ class TransactionFactory extends Factory
         return [
             'user_id' => User::inRandomOrder()->first()->id,
             'comic_id' => Comic::inRandomOrder()->first()->id,
-            'created_at' => now(),
-            'updated_at' => now(),
+            'created_at' => now()->subDays(rand(0, 7)),
+            'updated_at' => now()->subDays(rand(0, 7)),
         ];
     }
 }
