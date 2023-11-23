@@ -9,12 +9,15 @@ use App\Http\Requests\UpdatecategoryRequest;
 
 class CategoryController extends Controller
 {
+    public function __construct(category $category){
+        $this->category=$category;
+    } 
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::paginate(10);
         return view("category.index-category", compact("categories"));
     }
 
@@ -69,10 +72,22 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $comic = Category::findOrFail($id);
+        $category = Category::findOrFail($id);
 
-        $comic -> delete();
+        $category -> delete();
 
         return redirect()->route('category.index')->with('success', 'category deleted successfully');
+    }
+
+    public function search(Request $request, category $category){
+        if($request->has('search')){
+            $category = Category::where('category_name','LIKE', '%'.$request->search . '%')->paginate(10);
+        }
+        else {
+            $category = Category::all();
+        }
+        
+        return view('category.index-category',['categories'=>$category]);
+    
     }
 }

@@ -7,6 +7,8 @@ use App\Models\Comic;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreComicRequest;
 use App\Http\Requests\UpdateComicRequest;
+use Illuminate\Support\Facades\DB;
+
 
 class ComicController extends Controller
 {
@@ -27,7 +29,7 @@ class ComicController extends Controller
 
     public function index()
     {
-        $comics = Comic::all();
+        $comics = Comic::paginate(10);
         return view("comic.index-comic", compact("comics"));
     }
 
@@ -96,17 +98,6 @@ class ComicController extends Controller
         return redirect()->route('comic.index');
     }
 
-    public function search(Request $request, Comic $comic){
-        if($request->has('search')){
-            $comic = comic::where('comic_name','LIKE', '%'.$request->search . '%')->get();
-        }
-        else {
-            $comic = comic::all();
-        }
-        
-        return view('comic.index-comic',['comics'=>$comic]);
-    
-    }
     /**
      * Remove the specified resource from storage.
      */
@@ -116,5 +107,17 @@ class ComicController extends Controller
         $comics->delete();
 
         return redirect()->route('comic.index');  
+    }
+    
+    public function search(Request $request, Comic $comic){
+        if($request->has('search')){
+            $comic = comic::where('comic_name','LIKE', '%'.$request->search . '%')->paginate(10);
+        }
+        else {
+            $comic = comic::all();
+        }
+        
+        return view('comic.index-comic',['comics'=>$comic]);
+    
     }
 }

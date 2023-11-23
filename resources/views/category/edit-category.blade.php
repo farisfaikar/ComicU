@@ -5,7 +5,7 @@
         </h2>
         <form method="POST" action="{{ route('category.update', $category->id) }}" enctype="multipart/form-data" class="w-full sm:w max-w-2xl">
             @csrf
-            @method('PATCH')
+            @method('put')
             <div class="mb-5">
                 <label for="inputCategoryName" class="block mb-2 text-md font-large text-neutral-900 dark:text-white">Comic Name</label>
                 <input type="text" name="category_name" id="inputCategoryName" class="bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 dark:bg-neutral-700 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter category name here"  value="{{$category->category_name}}" required>
