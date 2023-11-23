@@ -23,6 +23,8 @@ class ComicFactory extends Factory
             'author' => fake()->name(),
             'stock' => fake()->numberBetween(0, 100),
             'category_id' => Category::inRandomOrder()->first()->id,
+            'created_at' => now()->subDays(rand(0, 7)),
+            'updated_at' => now()->subDays(rand(0, 7)),
         ];
     }
 }

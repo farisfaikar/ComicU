@@ -20,7 +20,10 @@ export default {
     },
 
     plugins: [
+        require('flowbite/plugin')({
+            charts: true,
+        }),
         forms,
-        require('daisyui')
+        require('daisyui'),
     ],
 };
