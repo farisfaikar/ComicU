@@ -20,8 +20,8 @@
                 <!-- head -->
                 <thead>
                     <tr class="uppercase">
-                        <th>NO</th>
-                        <th>Category-Name</th>
+                        <th>No</th>
+                        <th>Category Name</th>
                         <th>Color</th>
                         <th></th>
                     </tr>
@@ -71,7 +71,7 @@
                                     <!-- Modal body -->
                                     <div class="p-4 md:p-5 space-y-4">
                                         <p class="text-base leading-relaxed text-white">
-                                            Are you sure you want to delete this categories data?
+                                            Are you sure you want to delete this category data?
                                         </p>
                                     </div>
                                     <!-- Modal footer -->
@@ -91,7 +91,7 @@
                         @empty
                         <tr>
                             <td colspan="7" class="text-center">
-                                There are no comics.
+                                There are no category.
                             </td>
                         </tr>
                     @endforelse
