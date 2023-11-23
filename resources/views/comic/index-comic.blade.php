@@ -2,7 +2,7 @@
     <section class="p-5">
         <div class="flex justify-between items-center w-full">
             <h2 class="text-2xl font-bold">Comic List</h2>
-            <form action="{{ route('comic.search') }}" method="get">   
+            <form action="{{ route('comic.search') }}" method="get">
                 <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
                 <div class="flex ">
                     <input type="search" name="search" id="search" class="bg-black input input-bordered mr-1" placeholder="Search" required>
@@ -18,7 +18,7 @@
             <table class="table table-auto">
                 <!-- head -->
                 <thead>
-                    <tr class="uppercase">
+                    <tr class="uppercase text-neutral-600">
                         <th>no</th>
                         <th>comic name</th>
                         <th>synopsis</th>
@@ -31,7 +31,7 @@
                 <tbody>
                     @forelse ($comics as $key => $comic)
                         <tr>
-                            <td> {{$comics-> firstitem()+ $key }} </td>
+                            <td> {{ $comics->firstitem() + $key }} </td>
                             <td> {{ $comic->comic_name }} </td>
                             <td> {{ strlen($comic->synopsis) > 100 ? substr($comic->synopsis, 0, 100) . '...' : $comic->synopsis }} </td>
                             <td> {{ $comic->author }} </td>
@@ -45,7 +45,7 @@
                             </td>
                             <td class="text-center">
                                 <div class="flex flex-col gap-2 md:flex-row justify-center items-center">
-                                    <a href="{{ route('comic.edit', $comic->id) }}" type="button" class="text-gray-900 hover:text-white hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800">
+                                    <a href="{{ route('comic.edit', $comic->id) }}" type="button" class="text-neutral-900 hover:text-white hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800">
                                         Edit
                                     </a>
 
@@ -97,9 +97,9 @@
                     @endforelse
                 </tbody>
             </table>
-            <div>
-                {{ $comics->links() }}
-            </div>
+        </div>
+        <div class="mt-5">
+            {{ $comics->links() }}
         </div>
     </section>
 </x-app-layout>

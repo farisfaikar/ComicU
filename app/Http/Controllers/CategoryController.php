@@ -9,16 +9,19 @@ use App\Http\Requests\UpdatecategoryRequest;
 
 class CategoryController extends Controller
 {
-    public function __construct(category $category){
-        $this->category=$category;
-    } 
+    public Category $category;
+
+    public function __construct(Category $category)
+    {
+        $this->category = $category;
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
         $categories = Category::paginate(10);
-        return view("category.index-category", compact("categories"));
+        return view('category.index-category', compact('categories'));
     }
 
     /**
@@ -34,12 +37,10 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        // dd('hello');
         Category::create($request->all());
 
         return redirect('category')->with('success', 'Category added successfully.');
     }
-
 
     /**
      * Display the specified resource.
@@ -65,7 +66,9 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $category->update($request->all());
-        return redirect()->route('category.index')->with('success', 'Category updated successfully.');
+        return redirect()
+            ->route('category.index')
+            ->with('success', 'Category updated successfully.');
     }
 
     /**
@@ -75,20 +78,21 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
 
-        $category -> delete();
+        $category->delete();
 
-        return redirect()->route('category.index')->with('success', 'category deleted successfully');
+        return redirect()
+            ->route('category.index')
+            ->with('success', 'category deleted successfully');
     }
 
-    public function search(Request $request, category $category){
-        if($request->has('search')){
-            $category = Category::where('category_name','LIKE', '%'.$request->search . '%')->paginate(10);
-        }
-        else {
+    public function search(Request $request, category $category)
+    {
+        if ($request->has('search')) {
+            $category = Category::where('category_name', 'LIKE', '%' . $request->search . '%')->paginate(10);
+        } else {
             $category = Category::all();
         }
-        
-        return view('category.index-category',['categories'=>$category]);
-    
+
+        return view('category.index-category', ['categories' => $category]);
     }
 }

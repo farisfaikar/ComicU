@@ -87,9 +87,9 @@
                     @endforelse
                 </tbody>
             </table>
-            <div>
-                {{ $reviews->links() }}
-            </div>
+        </div>
+        <div>
+            {{ $reviews->links() }}
         </div>
     </section>
 </x-app-layout>
