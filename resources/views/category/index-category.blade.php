@@ -13,8 +13,8 @@
                 <!-- head -->
                 <thead>
                     <tr class="uppercase">
-                        <th>NO</th>
-                        <th>Category-Name</th>
+                        <th>No</th>
+                        <th>Category Name</th>
                         <th>Color</th>
                         <th></th>
                     </tr>
@@ -64,12 +64,12 @@
                                     <!-- Modal body -->
                                     <div class="p-4 md:p-5 space-y-4">
                                         <p class="text-base leading-relaxed text-white">
-                                            Are you sure you want to delete this comic data?
+                                            Are you sure you want to delete this category data?
                                         </p>
                                     </div>
                                     <!-- Modal footer -->
                                     <div class="flex items-center p-4 md:p-5">
-                                        <form action={{ route('category.destroy', $item->id) }}" method="post">
+                                        <form action={{ route('category.destroy', $item->id) }} method="post">
                                             @method('delete')
                                             @csrf
                                             <button data-modal-hide="static-modal-{{ $loop->iteration }}"
@@ -84,7 +84,7 @@
                         @empty
                         <tr>
                             <td colspan="7" class="text-center">
-                                There are no comics.
+                                There are no category.
                             </td>
                         </tr>
                     @endforelse
