@@ -14,7 +14,7 @@
                 Create Categories
             </a>
         </div>
-      
+        
         <div class="overflow-x-auto mt-5">
             <table class="table table-auto">
                 <!-- head -->
@@ -31,7 +31,61 @@
                     <tr>
                         <th>{{ $categories-> firstitem() + $key }}</th>
                         <th>{{ $category->category_name }}</th>
-                        <th>{{ $category->color }}</th>
+                        <th>
+                            <span class="
+                                {{-- red --}}
+                                {{($category->color == 'red' ) ? 
+                                // color style
+                                'class=" bg-red-800 text-red-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-red-400 border border-red-400 " ' : '' }}
+
+                                {{-- green --}}
+                                {{($category->color == 'green' ) ? 
+                                // color style
+                                'class=" bg-green-100 text-green-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400 " ' : '' }}
+
+                                {{-- yellow --}}
+                                {{($category->color == 'yellow' ) ? 
+                                // color style
+                                'class=" bg-yellow-100 text-yellow-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-yellow-300 border border-yellow-300 " ' : '' }}
+                                
+                                {{-- purple --}}
+                                {{($category->color == 'purple' ) ? 
+                                // color style
+                                'class=" bg-purple-100 text-purple-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-purple-400 border border-purple-400 " ' : '' }}
+
+                                {{-- dark --}}
+                                {{($category->color == 'dark' ) ? 
+                                // color style
+                                'class=" bg-gray-100 text-gray-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-400 border border-gray-500 " ' : '' }}
+
+                                {{-- pink --}}
+                                {{($category->color == 'pink' ) ? 
+                                // color style
+                                'class=" bg-pink-100 text-pink-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-pink-400 border border-pink-400 " ' : '' }}
+
+                                {{-- blue --}}
+                                {{($category->color == 'blue' ) ? 
+                                // color style
+                                'class=" bg-blue-100 text-blue-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-blue-400 border border-blue-400 " ' : '' }}
+
+                                {{-- orange --}}
+                                {{($category->color == 'orange' ) ? 
+                                // color style
+                                'class=" bg-orange-100 text-orange-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-orange-400 border border-orange-400 " ' : '' }}
+
+                                {{-- indigo --}}
+                                {{($category->color == 'indigo' ) ? 
+                                // color style
+                                'class=" bg-indigo-100 text-indigo-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-indigo-400 border border-indigo-400 " ' : '' }}
+
+                                {{-- white --}}
+                                {{($category->color == 'white' ) ? 
+                                // color style
+                                'class=" bg-gray-100 text-gray-50 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-500 dark:text-gray-50 border border-gray-100 " ' : '' }}
+
+                                {{-- end --}}">{{ $category->color }}
+                            </span></th>
+
                             <td class="text-center">
                                 <div class="flex flex-col sm:flex-row justify-end items-center gap-2 text-centerr">
                                     <a href="{{ route('category.edit', $category->id) }}" type="button"
