@@ -4,7 +4,7 @@
             <div class="flex justify-center">
             </div>
 
-            <div id="default-carousel" class="relative w-full mt-10" data-carousel="slide">
+            <div id="default-carousel" class="relative w-full" data-carousel="slide">
                 <!-- Carousel wrapper -->
                 <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
                     <!-- Item 1 -->
