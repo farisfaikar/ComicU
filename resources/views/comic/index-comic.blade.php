@@ -1,15 +1,15 @@
 <x-app-layout>
     <section class="p-5">
-        <div class="flex justify-between items-center w-full">
-            <h2 class="text-2xl font-bold">Comic List</h2>
-            <form action="{{ route('comic.search') }}" method="get">
+        <div class="flex sm:flex-row flex-col gap-2 justify-between items-center w-full">
+            <h2 class="w-full text-2xl font-bold">Comic List</h2>
+            <form action="{{ route('comic.search') }}" method="get" class="w-full">
                 <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-                <div class="flex ">
-                    <input type="search" name="search" id="search" class="bg-black input input-bordered mr-1" placeholder="Search" required>
+                <div class="flex gap-2 justify-end">
+                    <input type="search" name="search" id="search" class="w-full sm:w-auto bg-black input input-bordered mr-1" placeholder="Search" required>
                     <button type="submit" class="text-red-700 hover:text-white border border-blue-700 hover:bg-black-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-b-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-600 dark:focus:ring-blue-900">Search</button>
                 </div>
             </form>
-            <a href="{{ route('comic.create') }}" type="button" class="focus:outline-none text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">
+            <a href="{{ route('comic.create') }}" type="button" class="w-full sm:w-auto text-center focus:outline-none text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">
                 Create Comic
             </a>
         </div>
@@ -18,7 +18,7 @@
             <table class="table table-auto">
                 <!-- head -->
                 <thead>
-                    <tr class="uppercase text-neutral-600">
+                    <tr class="uppercase text-neutral-400">
                         <th>no</th>
                         <th>comic name</th>
                         <th>synopsis</th>
