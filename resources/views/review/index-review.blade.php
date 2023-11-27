@@ -2,22 +2,26 @@
     <section class="p-5">
         <div class="flex justify-between items-center w-full">
             <h2 class="text-2xl font-bold">Review List</h2>
-            <form action="{{ route('review.search') }}" method="get">   
-                <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-                <div class="flex ">
-                    <input type="search" name="search" id="search" class="bg-black input input-bordered mr-1" placeholder="Search" required>
-                    <button type="submit" class="text-red-700 hover:text-white border border-blue-700 hover:bg-black-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-b-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-600 dark:focus:ring-blue-900">Search</button>
-                </div>
-            </form>
-            <a href="{{ route('review.create') }}" type="button" class="focus:outline-none text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">
-                Create Review
-            </a>
-        </div> 
+            <div class="flex items-center">
+                <form action="{{ route('review.search') }}" method="get" class="mr-4">
+                    <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                    <div class="flex">
+                        <input type="search" name="search" id="search" class="bg-black input input-bordered mr-1" placeholder="Search" required>
+                        <button type="submit" class="text-red-700 hover:text-white border border-blue-700 hover:bg-black-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-b-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-600 dark:focus:ring-blue-900">Search</button>
+                    </div>
+                </form>
+                <a href="{{ route('review.create') }}" type="button" class="focus:outline-none text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">
+                    Create Review
+                </a>
+            </div>
+        </div>
+        
+         
            
         <div class="overflow-x-auto mt-5">
             <table class="table table-auto">
                 <!-- head -->
-                <thead>
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-neutral-500 dark:text-gray-50">
                     <tr class="uppercase">
                         <th>No</th>
                         <th>Title</th>
@@ -25,19 +29,20 @@
                         <th class="text-center">Stars</th>
                         <th class="text-center">User</th>
                         <th class="text-center">Comic</th>
+                        <th></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="bg-white border-b dark:bg-neutral-700 dark:border-gray-700">
                     @forelse ($reviews as $key => $review)
                         <tr>
-                            <td> {{ $reviews-> firstitem() + $key }} </td>
-                            <td> {{ $review->title }}</td>
+                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"> {{ $reviews-> firstitem() + $key }} </td>
+                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"> {{ $review->title }}</td>
                             <td> {{ $review->content }} </td>
                             <td class="text-center"> {{ $review->stars }}</td>
                             <td class="text-center"> {{ $review->user->name }}</td>
                             <td class="text-center"> {{ $review->comic->comic_name }}</td>
                             <td class="flex flex-col sm:flex-row justify-end items-center gap-2 text-center">
-                                <a href="{{ route('review.edit', $review->id) }}" type="button" class="text-gray-900 hover:text-white hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800">
+                                <a href="{{ route('review.edit', $review->id) }}" type="button" class="text-blue-700 hover:text-blue-500 border border-blue-500 hover:bg-gray-900 focus:ring-4 focus:outline-none  focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-600 dark:focus:ring-gray-800">
                                     Edit
                                 </a>
                                 <form action="{{ route('review.destroy', $review->id) }}" method="post">
