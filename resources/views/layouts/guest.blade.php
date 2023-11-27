@@ -15,7 +15,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans text-neutral-900 antialiased bg-neutral-950">
-        <div class="bg-neutral-800  flex justify-center">
+        <div class="fixed w-full z-50 bg-neutral-900/80 flex justify-center backdrop-blur-md">
             <div class="flex items-center py-2 px-6 lg:px-8 max-w-7xl justify-between w-full">
                 <a href="{{ route('home') }}" class="flex justify-center align-center text-xl">
                     <x-application-logo class="h-16 w-16" />
@@ -41,8 +41,11 @@
                 </div>
             </div>
         </div>
+
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-neutral-700">
-            {{ $slot }}
+            <div class="mt-20">
+                {{ $slot }}
+            </div>
         </div>
 
         <footer class="footer p-10 bg-neutral-800 opacity-90">

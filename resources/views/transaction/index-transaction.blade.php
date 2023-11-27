@@ -7,10 +7,10 @@
             </a>
         </div>
 
-        <div class="overflow-x-auto">
+        <div class="overflow-x-auto mt-5">
             <table class="table">
                 <!-- head -->
-                <thead>
+                <thead class="text-xs text-gray-300 uppercase bg-neutral-950">
                     <tr class="uppercase">
                         <th>ID</th>
                         <th>User</th>
@@ -19,7 +19,7 @@
                         <th>Updated At</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="bg-neutral-900 border-b border-neutral-900">
                     @forelse ($transactions as $transaction)
                         <tr>
                             <td>
