@@ -4,13 +4,10 @@
             <h2 class="text-2xl font-bold">Categories List</h2>
             <div class="flex items-center">
                 <form action="{{ route('category.search') }}" method="get" class="mr-4">
-                    <label for="search"
-                        class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                    <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
                     <div class="flex ">
-                        <input type="search" name="search" id="search" class="bg-black input input-bordered mr-1"
-                            placeholder="Search" required>
-                        <button type="submit"
-                            class="text-red-700 hover:text-white border border-blue-700 hover:bg-black-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-b-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-600 dark:focus:ring-blue-900">Search</button>
+                        <input type="search" name="search" id="search" class="bg-black input input-bordered mr-1" placeholder="Search" required>
+                        <button type="submit" class="text-red-700 hover:text-white border border-blue-700 hover:bg-black-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-b-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-600 dark:focus:ring-blue-900">Search</button>
                     </div>
                 </form>
                 <a href="{{ route('category.create') }}" type="button"
@@ -23,7 +20,7 @@
         <div class="overflow-x-auto mt-5">
             <table class="table table-auto">
                 <!-- head -->
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-neutral-500 dark:text-gray-50"">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-neutral-500 dark:text-gray-50">
                     <tr class="uppercase">
                         <th>No</th>
                         <th>Category Name</th>
@@ -38,7 +35,22 @@
                                 {{ $categories->firstitem() + $key }}</th>
                             <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {{ $category->category_name }}</th>
-                            <th>{{ $category->color }}</th>
+                            <th>
+                                <span class="
+                                        text-sm font-medium me-2 px-3 py-1 rounded 
+                                        {{ ($category->color == 'red') ? '      bg-red-600/20        text-red-500 border     border-red-500 ' : '' }}
+                                        {{ ($category->color == 'cyan') ? '     bg-cyan-700/30       text-cyan-500 border    border-cyan-500' : '' }}
+                                        {{ ($category->color == 'pink') ? '     bg-pink-200/10       text-pink-500 border    border-pink-500' : '' }}
+                                        {{ ($category->color == 'blue') ? '     bg-blue-800/20       text-blue-400 border    border-blue-400' : '' }}
+                                        {{ ($category->color == 'white') ? '    bg-neutral-300/20    text-gray-200 border    border-gray-200' : '' }}
+                                        {{ ($category->color == 'green') ? '    bg-green-500/10      text-green-400 border   border-green-400 ' : '' }}
+                                        {{ ($category->color == 'yellow') ? '   bg-yellow-400/10     text-yellow-400 border  border-yellow-400' : '' }}
+                                        {{ ($category->color == 'purple') ? '   bg-purple-600/20     text-purple-400 border  border-purple-400' : '' }}
+                                        {{ ($category->color == 'orange') ? '   bg-orange-600/10     text-orange-500 border  border-orange-500' : '' }}
+                                        {{ ($category->color == 'indigo') ? '   bg-indigo-500/20     text-indigo-400 border  border-indigo-400' : '' }}
+                                        ">
+                                {{$category->color}}</span>
+                            </th>
                             <td class="text-center">
                                 <div class="flex flex-col sm:flex-row justify-end items-center gap-2 text-centerr">
                                     <a href="{{ route('category.edit', $category->id) }}" type="button"
