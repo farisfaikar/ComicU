@@ -37,6 +37,11 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'category_name' => 'required|string|max:255',
+            'color' => 'required|string|in:red,yellow,green,purple,blue,orange,cyan,pink,indigo,white', // Warna yang diizinkan
+        ]);
+
         Category::create($request->all());
 
         return redirect('category')->with('success', 'Category added successfully.');
@@ -65,6 +70,11 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
+        $request->validate([
+            'category_name' => 'required|string|max:255',
+            'color' => 'required|string|in:red,yellow,green,purple,blue,orange,cyan,pink,indigo,white', // Warna yang diizinkan
+        ]);
+        
         $category->update($request->all());
         return redirect()
             ->route('category.index')
