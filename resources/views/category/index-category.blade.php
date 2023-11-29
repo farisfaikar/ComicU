@@ -1,7 +1,7 @@
 <x-app-layout>
     <section class="p-5">
         <div class="flex justify-between items-center w-full">
-            <h2 class="text-2xl font-bold">Categories List</h2>
+            <h2 class="text-2xl font-bold text-white">Categories List</h2>
             <div class="flex items-center">
                 <form action="{{ route('category.search') }}" method="get" class="mr-4">
                     <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
