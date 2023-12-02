@@ -11,9 +11,9 @@
         </div>
 
         <div class="overflow-x-auto mt-5">
-            <table class="table table-auto">
+            <table class="table">
                 <!-- head -->
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-neutral-500 dark:text-gray-50">
+                <thead class="text-xs text-gray-300 uppercase bg-neutral-950">
                     <tr class="uppercase">
                         <th>No</th>
                         <th class="text-center">User</th>
@@ -23,8 +23,8 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody class="bg-white border-b dark:bg-neutral-700 dark:border-gray-700">
-                    @forelse ($transactions as $key => $transaction)
+                <tbody class="bg-neutral-900 border-b border-neutral-900">
+                    @forelse ($transactions as $transaction)
                         <tr>
                             <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"> {{ $transactions-> firstitem() + $key }} </td>
                             <td class="text-center"> {{ $transaction->user->name }}</td>
