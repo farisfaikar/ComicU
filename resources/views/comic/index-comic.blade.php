@@ -2,8 +2,8 @@
     <section class="p-5">
         <div class="flex sm:flex-row flex-col gap-2 justify-between items-center w-full">
             <h2 class="text-2xl font-bold text-center sm:text-left">Comic List</h2>
-            <div class="flex items-center align-center gap-5">
-                <form action="{{ route('comic.search') }}" method="get">
+            <div class="flex sm:flex-row flex-col items-center align-center gap-5 sm:w-auto w-full justify-end">
+                <form action="{{ route('comic.search') }}" method="get" class="w-full sm:w-auto">
                     <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
                     <div class="flex gap-2 justify-end">
                         <input type="search" name="search" id="search" class="w-full sm:w-auto bg-black input input-bordered mr-1" placeholder="Search" required>
