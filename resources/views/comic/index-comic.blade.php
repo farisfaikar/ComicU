@@ -3,13 +3,7 @@
         <div class="flex flex-col items-center justify-between w-full gap-2 sm:flex-row">
             <h2 class="text-2xl font-bold text-center sm:text-left">Comic List</h2>
             <div class="flex flex-col items-center justify-end w-full gap-5 sm:flex-row align-center sm:w-auto">
-                <form action="{{ route('comic.search') }}" method="get" class="w-full sm:w-auto">
-                    <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-                    <div class="flex justify-end gap-2">
-                        <input type="search" name="search" id="search" class="w-full mr-1 bg-black sm:w-auto input input-bordered" placeholder="Search" required>
-                        <button type="submit" class="text-red-700 hover:text-white border border-blue-700 hover:bg-black-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-b-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-600 dark:focus:ring-blue-900">Search</button>
-                    </div>
-                </form>
+                <x-searchbar :action="route('comic.search')" />
                 <a href="{{ route('comic.create') }}" type="button" class="sm:w-auto w-full text-center focus:outline-none text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">
                     Create Comic
                 </a>

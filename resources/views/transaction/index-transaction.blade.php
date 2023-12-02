@@ -3,8 +3,9 @@
         <div class="flex justify-between items-center w-full">
             <h2 class="text-2xl font-bold">Transaction List</h2>
             <div class="flex items-center">
-                
-                <a href="{{ route('transaction.create') }}" type="button" class="focus:outline-none text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">
+                <x-searchbar :action="route('transaction.search')" />
+                <a href="{{ route('transaction.create') }}" type="button"
+                    class="focus:outline-none text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">
                     Create Transaction
                 </a>
             </div>
@@ -24,36 +25,46 @@
                     </tr>
                 </thead>
                 <tbody class="bg-neutral-900 border-b border-neutral-900">
-                    @forelse ($transactions as $transaction)
+                    @forelse ($transactions as $key => $transaction)
                         <tr>
-                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"> {{ $transactions-> firstitem() + $key }} </td>
+                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                {{ $transactions->firstitem() + $key }} </td>
                             <td class="text-center"> {{ $transaction->user->name }}</td>
                             <td class="text-center"> {{ $transaction->comic->comic_name }}</td>
                             <td class="text-center"> {{ $transaction->created_at }}</td>
                             <td class="text-center"> {{ $transaction->updated_at }}</td>
                             <td class="flex flex-col sm:flex-row justify-end items-center gap-2 text-center">
-                            <a href="{{ route('transaction.edit', $transaction->id) }}" type="button" class="text-blue-700 hover:text-blue-500 border border-blue-500 hover:bg-gray-900 focus:ring-4 focus:outline-none  focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-600 dark:focus:ring-gray-800">
+                                <a href="{{ route('transaction.edit', $transaction->id) }}" type="button"
+                                    class="text-blue-700 hover:text-blue-500 border border-blue-500 hover:bg-gray-900 focus:ring-4 focus:outline-none  focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-600 dark:focus:ring-gray-800">
                                     Edit
                                 </a>
                                 <form action="{{ route('transaction.destroy', $transaction->id) }}" method="post">
-                                    <button data-modal-target="static-modal-{{ $loop->iteration }}" data-modal-toggle="static-modal-{{ $loop->iteration }}" class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900" type="button">
+                                    <button data-modal-target="static-modal-{{ $loop->iteration }}"
+                                        data-modal-toggle="static-modal-{{ $loop->iteration }}"
+                                        class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900"
+                                        type="button">
                                         Delete
                                     </button>
                                 </form>
                             </td>
                         </tr>
                         <!-- Tambahkan modal delete jika diperlukan -->
-                                                <!-- Main modal -->
-                                                <div id="static-modal-{{ $loop->iteration }}" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                        <!-- Main modal -->
+                        <div id="static-modal-{{ $loop->iteration }}" data-modal-backdrop="static" tabindex="-1"
+                            aria-hidden="true"
+                            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                             <div class="relative p-4 w-full max-w-2xl max-h-full">
                                 <!-- Modal content -->
                                 <div class="relative bg-white rounded-lg shadow dark:bg-neutral-700">
                                     <!-- Modal header -->
-                                    <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t border-neutral-600">
+                                    <div
+                                        class="flex items-center justify-between p-4 md:p-5 border-b rounded-t border-neutral-600">
                                         <h3 class="text-xl font-semibold text-error">
                                             Warning
                                         </h3>
-                                        <button type="button" class="text-white bg-transparent rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-neutral-600 dark:hover:text-white" data-modal-hide="static-modal-{{ $loop->iteration }}">X
+                                        <button type="button"
+                                            class="text-white bg-transparent rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-neutral-600 dark:hover:text-white"
+                                            data-modal-hide="static-modal-{{ $loop->iteration }}">X
                                         </button>
                                     </div>
                                     <!-- Modal body -->
@@ -64,11 +75,14 @@
                                     </div>
                                     <!-- Modal footer -->
                                     <div class="flex items-center p-4 md:p-5">
-                                        <form action="{{ route('transaction.destroy', $transaction->id) }}" method="post">
+                                        <form action="{{ route('transaction.destroy', $transaction->id) }}"
+                                            method="post">
                                             @method('delete')
                                             @csrf
-                                            <button data-modal-hide="static-modal-{{ $loop->iteration }}" type="submit" class="btn btn-error text-white">Yes, I'm sure</button>
-                                            <button data-modal-hide="static-modal-{{ $loop->iteration }}" type="button" class="btn btn-ghost">No, cancel</button>
+                                            <button data-modal-hide="static-modal-{{ $loop->iteration }}"
+                                                type="submit" class="btn btn-error text-white">Yes, I'm sure</button>
+                                            <button data-modal-hide="static-modal-{{ $loop->iteration }}"
+                                                type="button" class="btn btn-ghost">No, cancel</button>
                                         </form>
                                     </div>
                                 </div>

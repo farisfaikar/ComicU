@@ -3,13 +3,7 @@
         <div class="flex justify-between items-center w-full">
             <h2 class="text-2xl font-bold">Review List</h2>
             <div class="flex items-center">
-                <form action="{{ route('review.search') }}" method="get" class="mr-4">
-                    <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-                    <div class="flex">
-                        <input type="search" name="search" id="search" class="bg-black input input-bordered mr-1" placeholder="Search" required>
-                        <button type="submit" class="text-red-700 hover:text-white border border-blue-700 hover:bg-black-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-b-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-600 dark:focus:ring-blue-900">Search</button>
-                    </div>
-                </form>
+               <x-searchbar :action="route('review.search')" />
                 <a href="{{ route('review.create') }}" type="button" class="focus:outline-none text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">
                     Create Review
                 </a>

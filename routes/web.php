@@ -24,9 +24,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::middleware('auth')->group(function () {
-    Route::resource('/transaction', TransactionController::class);
-    Route::resource('/category', CategoryController::class);
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::post('/transaction/store', [TransactionController::class, 'store'])->name('transaction.store');
+    Route::delete('/transaction/{transaction}', [TransactionController::class, 'destroy'])->name('transaction.destroy');
+    Route::get('/transaction/create', [TransactionController::class, 'create'])->name('transaction.create');
+    Route::get('/transaction', [TransactionController::class, 'index'])->name('transaction.index');
+    Route::put('/transaction/update/{transaction}', [TransactionController::class, 'update'])->name('transaction.update');
+    Route::get('/transaction/{transaction}/edit', [TransactionController::class, 'edit'])->name('transaction.edit');
+    Route::get('/transaction/search', [TransactionController::class,'search'])->name('transaction.search');
     Route::post('/category/store', [CategoryController::class, 'store'])->name('category.store');
     Route::delete('/category/{category}', [categoryController::class, 'destroy'])->name('category.destroy');
     Route::get('/category/create', [CategoryController::class, 'create'])->name('category.create');
