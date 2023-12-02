@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Comic;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
-use App\Models\Comic;
-use App\Models\User;
+use Illuminate\Routing\Controller;
 
 class TransactionController extends Controller
 {
@@ -14,11 +15,8 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        return view('transaction.index-transaction', [
-            'transactions' => Transaction::all(),
-            'users' => User::all(),
-            'comics' => Comic::all(),
-        ]);
+        $transactions = Transaction::paginate(10);
+    return view('transaction.index-transaction', compact('transactions'));
     }
 
     /**
@@ -41,16 +39,17 @@ class TransactionController extends Controller
             'user_id' => 'required',
             'comic_id' => 'required',
         ]);
-        
+    
+        // Buat objek Transaction dan set propertinya
         $transaction = new Transaction();
-
         $transaction->user_id = $validatedData['user_id'];
-        
         $transaction->comic_id = $validatedData['comic_id'];
-        
-        $transaction->save();
 
-        return view('transactions.index');
+        // Simpan transaksi
+        $transaction->save();
+    
+        // Redirect ke halaman index-transaction dengan pesan sukses
+        return redirect()->route('transaction.index')->with('success', 'Transaction created successfully.');
     }
 
     /**
@@ -66,9 +65,8 @@ class TransactionController extends Controller
      */
     public function edit(Transaction $transaction)
     {
-        return view('transaction.edit-transaction', [
-            'transaction' => Transaction::find($transaction->id),
-        ]);
+        $comics = Comic::all(); // Gantilah ini dengan cara Anda mendapatkan daftar Comic
+        return view('transaction.edit-transaction', compact('transaction', 'comics'));
     }
 
     /**
@@ -76,7 +74,19 @@ class TransactionController extends Controller
      */
     public function update(Request $request, Transaction $transaction)
     {
-        //
+        $validatedData = $request->validate([
+            'user_id' => 'required',
+            'comic_id' => 'required',
+            
+        ]);
+    
+        $transaction->update([
+            'user_id' => $validatedData['user_id'],
+            'comic_id' => $validatedData['comic_id'],
+            
+        ]);
+    
+        return redirect()->route('transaction.index')->with('success', 'Transaction updated successfully');
     }
 
     /**
@@ -84,6 +94,10 @@ class TransactionController extends Controller
      */
     public function destroy(Transaction $transaction)
     {
-        //
+        $transaction->delete();
+
+        return redirect()
+            ->route('transaction.index')
+            ->with('success', 'Transaction deleted successfully.');
     }
 }
