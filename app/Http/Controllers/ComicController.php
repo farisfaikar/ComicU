@@ -49,15 +49,7 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedata = $request->validate([
-            'comic_name' => 'required',
-            'synopsis' => 'required',
-            'author'=>'required',
-            'comic_photo'=> 'required|mimes:png,jpg,jpeg|max:2048',
-            'stock'=>'required',
-            'category_id'=>'required'           
-        ]);
-        
+  
         $comic_photo=$request -> file('comic_photo');
         $filename = date('Y-m-d' ).$comic_photo->getClientOriginalName();
         $path = 'comic-photo/'.$filename;
