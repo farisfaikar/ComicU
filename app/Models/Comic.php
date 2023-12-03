@@ -13,6 +13,7 @@ class Comic extends Model
         'comic_name',
         'synopsis',
         'author',
+        'comic_photo',
         'stock',
         'category_id',
     ];

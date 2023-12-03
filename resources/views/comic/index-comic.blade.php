@@ -9,15 +9,16 @@
                 </a>
             </div>
         </div>
-
         <div class="mt-5 overflow-x-auto">
             <table class="table table-auto">
                 <!-- head -->
+                
                 <thead class="text-xs text-gray-300 uppercase bg-neutral-950">
                     <tr>
                         <th>no</th>
                         <th>comic name</th>
                         <th>synopsis</th>
+                        <th>comic photo</th>
                         <th>author</th>
                         <th class="text-center">stock</th>
                         <th class="text-center">category</th>
@@ -30,6 +31,7 @@
                             <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"> {{ $comics->firstitem() + $key }} </td>
                             <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"> {{ $comic->comic_name }} </td>
                             <td> {{ strlen($comic->synopsis) > 100 ? substr($comic->synopsis, 0, 100) . '...' : $comic->synopsis }} </td>
+                            <td> <img src="{{ asset('storage/comic-photo/'.$comic->comic_photo) }}" alt="sss" class="w-20"></td>
                             <td> {{ $comic->author }} </td>
                             <td class="text-center"> {{ $comic->stock }}</td>
                             <td class="text-center">
