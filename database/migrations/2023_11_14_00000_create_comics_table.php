@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('comic_name');
             $table->text('synopsis');
             $table->string('author');
+            $table->string('comic_photo');
             $table->integer('stock');
             $table->foreignIdFor(Category::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
