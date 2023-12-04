@@ -53,14 +53,10 @@
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
             </svg>
             <span class="sr-only">Next</span>
-        </span>
-    </button>
+            </span>
+        </button>
+    </div>
 </div>
-
-            </div>
-
-           
-
             <div class="mt-10 grid grid-cols-1 lg:grid-cols-4 sm:grid-cols-2 md:grid-cols-3 gap-10">
                 @foreach ($comics as $comic)
                     <div class="max-w-sm bg-neutral-900 border border-neutral-800 rounded-lg shadow">

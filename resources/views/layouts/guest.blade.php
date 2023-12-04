@@ -68,7 +68,12 @@
                         <a href="{{ route('login') }}" class="inline-block bg-transparent hover:bg-neutral-300 text-neutral-100 font-semibold hover:text-neutral-900 py-2 px-4 border border-white-500 hover:border-transparent rounded focus:outline-none focus:ring focus:ring-blue-200 focus:ring-offset-neutral-100">
                             Login
                         </a>
-                
+                         {{-- @if (Route::has('register'))
+                        <a href="{{ route('register') }}" class="inline-block bg-transparent hover:bg-neutral-300 text-neutral-100 font-semibold hover:text-neutral-900 py-2 px-4 border border-white-500 hover:border-transparent rounded">
+                        Register
+                    </a>
+
+                        @endif --}}
                     @endauth
                 </div>
             </div>
