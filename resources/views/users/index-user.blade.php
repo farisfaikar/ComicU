@@ -1,10 +1,29 @@
 <x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-neutral-800 dark:text-neutral-200 leading-tight">
+            {{ __('User List') }}
+        </h2>
+    </x-slot>
     <section class="p-5">
-        <div class="flex justify-between items-center w-full">
-            <h2 class="text-2xl font-bold">User List</h2>
-            <div class="flex items-center">
-            <x-searchbar :action="route('user.search')" />
-                <a href="{{ route('user.create') }}" type="button" class="focus:outline-none text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">
+        <div class="flex justify-between items-center">
+            <div class="flex items-center w-full">
+                <div class="search-navbar w-11/12">           
+                    <form action="{{ route('user.search') }}" method="get" class="mr-4">
+                        <div class="flex">
+                            <label for="search-dropdown" class="blockmb-2 text-sm font-medium text-neutral-900 sr-only dark:text-white">Search User</label>
+                            <div class="relative w-full">
+                                <input type="search" name="search" id="search" class="block p-2.5 w-full z-20 text-sm text-neutral-900 bg-neutral-50 rounded-s-lg rounded-e-lg border-s-neutral-50 border-s-2 border border-neutral-300 focus:ring-amber-700 focus:border-amber-700 dark:bg-neutral-700 dark:border-s-neutral-700  dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:border-amber-500" placeholder="Search user name..." required>
+                                <button type="submit" class="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-amber-700 rounded-e-lg border border-amber-700 hover:bg-amber-800 focus:ring-4 focus:outline-none focus:ring-amber-300 dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-blue-800">
+                                    <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                                    </svg>
+                                    <span class="sr-only">Search</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>  
+                <a href="{{ route('user.create') }}" type="button" class=" focus:outline-none text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm text-center px-2.5 py-2.5 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">
                     Create User
                 </a>
             </div>
