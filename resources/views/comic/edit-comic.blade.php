@@ -24,6 +24,13 @@
                 <input type="number" name="stock" id="inputStock" class="bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-neutral-700 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{ $comic->stock }}" required>
             </div>
             <div class="mb-6">
+                <label class="bblock mb-2 text-md font-large text-neutral-900 dark:text-white" for="file_input">Upload image</label>
+                <input
+                    class="block w-full text-sm text-neutral-900 border border-gray-300 rounded-lg cursor-pointer bg-neutral-900 dark:text-gray-400 focus:outline-none dark:bg-neutral-900 dark:border-gray-600 dark:placeholder-gray-400"
+                    id="file_input" type="file" id="inputComicPhoto" name="comic_photo">
+                    <img src="{{ asset('storage/comic-photo/'.$comic->comic_photo) }}" alt="sss" class="w-20">
+            </div>
+            <div class="mb-6">
                 <label for="selectCategoryId" class="block mb-2 text-md font-large text-neutral-900 dark:text-white">Category</label>
                 <select id="selectCategoryId" name="category_id" class="bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-neutral-700 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option value="" disabled selected>Choose a category</option>
