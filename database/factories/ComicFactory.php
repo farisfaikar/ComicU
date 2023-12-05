@@ -22,6 +22,7 @@ class ComicFactory extends Factory
             'synopsis' => fake()->realTextBetween(500, 1000),
             'author' => fake()->name(),
             'stock' => fake()->numberBetween(0, 100),
+            'comic_photo' => fake()->imageUrl(),
             'category_id' => Category::inRandomOrder()->first()->id,
             'created_at' => now()->subDays(rand(0, 7)),
             'updated_at' => now()->subDays(rand(0, 7)),
