@@ -27,6 +27,9 @@
                     <x-nav-link :href="route('review.index')" :active="request()->routeIs('review.index')">
                         {{ __('Reviews') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
+                        {{ __('Users') }}
+                    </x-nav-link>
                 </div>
             </div>
             <!-- Settings Dropdown -->
