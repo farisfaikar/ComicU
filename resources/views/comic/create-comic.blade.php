@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="flex flex-col items-center gap-5 w-full mt-10 p-5" style="background-image: url('img/background-comicu.jpg'); background-size: contain;"  >
+    <div class="flex flex-col items-center gap-5 w-full p-5" style="background-image: url('/img/background-comicu.jpg'); background-size: contain;"  >
         <div class="bg-neutral-900 p-8 rounded-lg">
             <h2 class="text-2xl font-bold text-center mb-2">
                 Create Comic

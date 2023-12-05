@@ -1,8 +1,8 @@
 <x-app-layout>
-    <div class="flex flex-col items-center gap-5 w-full mt-10 p-5">
+    <div class="flex flex-col items-center gap-5 w-full  p-5" style="background-image: url('/img/background-comicu.jpg'); background-size: contain;" >
         <div class="bg-neutral-900 p-8 rounded-lg">
 
-            <h2 class="text-2xl font-bold mb-3">
+            <h2 class="text-2xl font-bold text-center mb-3">
                 Create Review
             </h2>
             <form method="post" action="{{ route('review.store') }}" enctype="multipart/form-data" class="w-full sm:w max-w-2xl">
