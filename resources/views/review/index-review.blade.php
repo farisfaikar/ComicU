@@ -55,10 +55,10 @@
         
          
            
-        <div class="overflow-x-auto mt-5">
+        <div class="mt-5 overflow-x-auto">
             <table class="table table-auto">
                 <!-- head -->
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-neutral-500 dark:text-gray-50">
+                <thead class="text-xs text-gray-300 uppercase bg-neutral-950">
                     <tr class="uppercase">
                         <th>No</th>
                         <th>Title</th>
@@ -69,7 +69,7 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody class="bg-white border-b dark:bg-neutral-700 dark:border-gray-700">
+                <tbody class="border-b bg-neutral-900 border-neutral-900">
                     @forelse ($reviews as $key => $review)
                         <tr>
                             <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"> {{ $reviews-> firstitem() + $key }} </td>
@@ -78,7 +78,7 @@
                             <td class="text-center"> {{ $review->stars }}</td>
                             <td class="text-center"> {{ $review->user->name }}</td>
                             <td class="text-center"> {{ $review->comic->comic_name }}</td>
-                            <td class="flex flex-col sm:flex-row justify-end items-center gap-2 text-center">
+                            <td class="flex flex-col items-center justify-end gap-2 text-center sm:flex-row">
                                 <a href="{{ route('review.edit', $review->id) }}" type="button" class="text-blue-700 hover:text-blue-500 border border-blue-500 hover:bg-gray-900 focus:ring-4 focus:outline-none  focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-600 dark:focus:ring-gray-800">
                                     Edit
                                 </a>
@@ -91,19 +91,19 @@
                         </tr>
                         <!-- Main modal -->
                         <div id="static-modal-{{ $loop->iteration }}" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                            <div class="relative p-4 w-full max-w-2xl max-h-full">
+                            <div class="relative w-full max-w-2xl max-h-full p-4">
                                 <!-- Modal content -->
                                 <div class="relative bg-white rounded-lg shadow dark:bg-neutral-700">
                                     <!-- Modal header -->
-                                    <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t border-neutral-600">
+                                    <div class="flex items-center justify-between p-4 border-b rounded-t md:p-5 border-neutral-600">
                                         <h3 class="text-xl font-semibold text-error">
                                             Warning
                                         </h3>
-                                        <button type="button" class="text-white bg-transparent rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-neutral-600 dark:hover:text-white" data-modal-hide="static-modal-{{ $loop->iteration }}">X
+                                        <button type="button" class="inline-flex items-center justify-center w-8 h-8 text-sm text-white bg-transparent rounded-lg ms-auto dark:hover:bg-neutral-600 dark:hover:text-white" data-modal-hide="static-modal-{{ $loop->iteration }}">X
                                         </button>
                                     </div>
                                     <!-- Modal body -->
-                                    <div class="p-4 md:p-5 space-y-4">
+                                    <div class="p-4 space-y-4 md:p-5">
                                         <p class="text-base leading-relaxed text-white">
                                             Are you sure you want to delete this review data?
                                         </p>
@@ -113,7 +113,7 @@
                                         <form action="{{ route('review.destroy', $review->id) }}" method="post">
                                             @method('delete')
                                             @csrf
-                                            <button data-modal-hide="static-modal-{{ $loop->iteration }}" type="submit" class="btn btn-error text-white">Yes, I'm sure</button>
+                                            <button data-modal-hide="static-modal-{{ $loop->iteration }}" type="submit" class="text-white btn btn-error">Yes, I'm sure</button>
                                             <button data-modal-hide="static-modal-{{ $loop->iteration }}" type="button" class="btn btn-ghost">No, cancel</button>
                                         </form>
                                     </div>
@@ -130,7 +130,7 @@
                 </tbody>
             </table>
         </div>
-        <div>
+        <div class="mt-5">
             {{ $reviews->links() }}
         </div>
     </section>

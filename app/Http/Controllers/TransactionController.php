@@ -13,10 +13,12 @@ class TransactionController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+
     public function index()
     {
         $transactions = Transaction::paginate(10);
-    return view('transaction.index-transaction', compact('transactions'));
+        return view('transaction.index-transaction', compact('transactions'));
     }
 
     /**
@@ -39,7 +41,7 @@ class TransactionController extends Controller
             'user_id' => 'required',
             'comic_id' => 'required',
         ]);
-    
+
         // Buat objek Transaction dan set propertinya
         $transaction = new Transaction();
         $transaction->user_id = $validatedData['user_id'];
@@ -47,7 +49,7 @@ class TransactionController extends Controller
 
         // Simpan transaksi
         $transaction->save();
-    
+
         // Redirect ke halaman index-transaction dengan pesan sukses
         return redirect()->route('transaction.index')->with('success', 'Transaction created successfully.');
     }
@@ -77,15 +79,15 @@ class TransactionController extends Controller
         $validatedData = $request->validate([
             'user_id' => 'required',
             'comic_id' => 'required',
-            
+
         ]);
-    
+
         $transaction->update([
             'user_id' => $validatedData['user_id'],
             'comic_id' => $validatedData['comic_id'],
-            
+
         ]);
-    
+
         return redirect()->route('transaction.index')->with('success', 'Transaction updated successfully');
     }
 
@@ -100,4 +102,17 @@ class TransactionController extends Controller
             ->route('transaction.index')
             ->with('success', 'Transaction deleted successfully.');
     }
+
+    public function search(Request $request, Transaction $transaction){
+        if($request->has('search')){
+            $transaction = Transaction::where('user_id','LIKE', '%'.$request->search . '%')->paginate(10);
+        }
+        else {
+            $transaction = Transaction::all();
+        }
+        
+        return view('transaction.index-transaction',['transactions'=>$transaction]);
+    
+    }
+
 }

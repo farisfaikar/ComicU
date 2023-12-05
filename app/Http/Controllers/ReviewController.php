@@ -11,9 +11,7 @@ use Illuminate\Routing\Controller;
 
 class ReviewController extends Controller
 {
-    public function __construct(Review $review){
-        $this->review=$review;
-    } 
+
 
     public function index()
     {

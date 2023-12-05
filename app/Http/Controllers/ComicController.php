@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreComicRequest;
 use App\Http\Requests\UpdateComicRequest;
 use Illuminate\Support\Facades\DB;
-
+use Termwind\Components\Dd;
+use Illuminate\Support\Facades\Storage;
 
 class ComicController extends Controller
 {
@@ -48,16 +49,21 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedata = $request->validate([
-            'comic_name' => 'required',
-            'synopsis' => 'required',
-            'author'=>'required',
-            'stock'=>'required',
-            'category_id'=>'required'           
-        ]);
-        
-        Comic::create($validatedata);
+  
+        $comic_photo=$request -> file('comic_photo');
+        $filename = date('Y-m-d' ).$comic_photo->getClientOriginalName();
+        $path = 'comic-photo/'.$filename;
 
+        Storage::disk('public') -> put($path,file_get_contents($comic_photo));
+
+        $data['comic_name'] =$request->comic_name;
+        $data['synopsis'] =$request->synopsis;
+        $data['author'] =$request->author;
+        $data['comic_photo'] =$filename;
+        $data['stock'] =$request->stock;
+        $data['category_id'] =$request->category_id;
+
+        Comic::create($data);
         return redirect()->route('comic.index');
     }
 
