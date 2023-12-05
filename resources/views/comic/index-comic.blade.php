@@ -1,10 +1,15 @@
 <x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-neutral-800 dark:text-neutral-200 leading-tight">
+            {{ __('Comic List') }}
+        </h2>
+    </x-slot>
     <section class="p-5">
-        <div class="flex flex-col items-center justify-between w-full gap-2 sm:flex-row">
-            <h2 class="text-2xl font-bold text-center sm:text-left text-white">Comic List</h2>
-            <div class="flex flex-col items-center justify-end w-full gap-5 sm:flex-row align-center sm:w-auto">
-                <x-searchbar :action="route('comic.search')" />
-                <a href="{{ route('comic.create') }}" type="button" class="sm:w-auto w-full text-center focus:outline-none text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">
+        <div class="flex justify-between items-center ">
+            <div class="flex items-center w-full">
+                <x-searchbar :action="route('comic.search')" />  
+                <a href="{{ route('comic.create') }}" type="button" class=" focus:outline-none text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm text-center px-2.5 py-2.5 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">
+
                     Create Comic
                 </a>
             </div>

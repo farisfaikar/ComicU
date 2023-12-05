@@ -103,16 +103,25 @@ class TransactionController extends Controller
             ->with('success', 'Transaction deleted successfully.');
     }
 
-    public function search(Request $request, Transaction $transaction){
-        if($request->has('search')){
-            $transaction = Transaction::where('user_id','LIKE', '%'.$request->search . '%')->paginate(10);
-        }
-        else {
-            $transaction = Transaction::all();
-        }
-        
-        return view('transaction.index-transaction',['transactions'=>$transaction]);
-    
+    public function search(Request $request, Transaction $transaction)
+{
+    $query = Transaction::query();
+
+    if ($request->has('search')) {
+        $searchTerm = $request->search;
+
+        $query->where(function ($query) use ($searchTerm) {
+            $query->where('user_id', 'LIKE', '%' . $searchTerm . '%')
+                ->orWhereHas('user', function ($subQuery) use ($searchTerm) {
+                    $subQuery->where('name', 'LIKE', '%' . $searchTerm . '%');
+                });
+        });
     }
+
+    $transactions = $query->paginate(10);
+
+    return view('transaction.index-transaction', ['transactions' => $transactions]);
+}
+
 
 }
