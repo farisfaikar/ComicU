@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="flex flex-col items-center gap-5 w-full mt-10 p-5">
-        <h2 class="text-2xl font-bold">
+        <h2 class="text-2xl font-bold text-white">
             Create Comic
         </h2>
         <form method="post" action="{{ route('comic.store') }}" enctype="multipart/form-data"
@@ -13,6 +13,13 @@
                 <input type="text" name="comic_name" id="inputComicName"
                     class="bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-neutral-700 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Enter comic name here" required>
+            </div>
+            <div class="relative mb-6">
+                <label for="inputComicName" class="block mb-2 text-md font-large text-neutral-900 dark:text-white">Price</label>
+                <span class="absolute inset-y-0 left-0 pl-2 pt-8 flex items-center pointer-events-none text-neutral-900 dark:text-white">
+                Rp.
+                </span>
+                <input type="text" name="price" id="inputPrice" class="pl-9 bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-neutral-700 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter price comic here" required>
             </div>
             <div class="mb-6">
                 <label for="inputSynopsis"
