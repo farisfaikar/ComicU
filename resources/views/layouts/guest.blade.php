@@ -14,22 +14,22 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans text-neutral-900 antialiased bg-neutral-950">
-        <nav class="bg-neutral-800 flex justify-center fixed  w-full z-50">
-            <div class="flex items-center py-2 px-6 lg:px-8 max-w-7xl justify-between w-full gap-2">
-                <a href="{{ route('home') }}" class="flex justify-center align-center text-xl">
-                    <x-application-logo class="h-16 w-16" />
+    <body class="font-sans antialiased text-neutral-900 bg-neutral-950">
+        <nav class="fixed z-50 flex justify-center w-full bg-neutral-800">
+            <div class="flex items-center justify-between w-full gap-2 px-6 py-2 lg:px-8 max-w-7xl">
+                <a href="{{ route('home') }}" class="flex justify-center text-xl align-center">
+                    <x-application-logo class="w-16 h-16" />
                 </a>
-                <div class="search-navbar w-10/12">           
+                <div class="w-10/12 search-navbar">           
                     <form>
                         <div class="flex">
-                            <label for="search-dropdown" class="blockmb-2 text-sm font-medium text-neutral-900 sr-only dark:text-white">Your Email</label>
+                            <label for="search-dropdown" class="text-sm font-medium sr-only blockmb-2 text-neutral-900 dark:text-white">Your Email</label>
                             <button id="dropdown-button" data-dropdown-toggle="dropdown" class="flex-shrink-0 z-30 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-neutral-900 bg-neutral-100 border border-neutral-300 rounded-s-lg hover:bg-neutral-200 focus:ring-4 focus:outline-none focus:ring-neutral-100 dark:bg-amber-700 dark:hover:bg-amber-600 dark:focus:ring-neutral-700 dark:text-white dark:border-neutral-600" type="button">All categories 
                                 <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                                 </svg>
                             </button>
-                            <div id="dropdown" class="z-30 hidden bg-white divide-y divide-amber-100 rounded-lg shadow w-44 dark:bg-amber-600">
+                            <div id="dropdown" class="z-30 hidden bg-white divide-y rounded-lg shadow divide-amber-100 w-44 dark:bg-amber-600">
                                 <ul class="py-2 text-sm text-amber-700 dark:text-neutral-200" aria-labelledby="dropdown-button">
                                     <li>
                                         <button type="button" class="inline-flex w-full px-4 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-600 dark:hover:text-white">Fiction</button>
@@ -65,60 +65,54 @@
                     @auth
                         <a href="{{ route('dashboard') }}" class="font-semibold text-neutral-400 hover:text-neutral-500 focus:outline focus:outline-2 focus:rounded-sm focus:outline-neutral-500">Dashboard</a>
                     @else
-                        <a href="{{ route('login') }}" class="inline-block bg-transparent hover:bg-neutral-300 text-neutral-100 font-semibold hover:text-neutral-900 py-2 px-4 border border-white-500 hover:border-transparent rounded focus:outline-none focus:ring focus:ring-blue-200 focus:ring-offset-neutral-100">
+                        <a href="{{ route('login') }}" class="inline-block px-4 py-2 font-semibold bg-transparent border rounded hover:bg-neutral-300 text-neutral-100 hover:text-neutral-900 border-white-500 hover:border-transparent focus:outline-none focus:ring focus:ring-blue-200 focus:ring-offset-neutral-100">
                             Login
                         </a>
-                         {{-- @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="inline-block bg-transparent hover:bg-neutral-300 text-neutral-100 font-semibold hover:text-neutral-900 py-2 px-4 border border-white-500 hover:border-transparent rounded">
-                        Register
-                    </a>
-
-                        @endif --}}
                     @endauth
                 </div>
             </div>
         </nav>
         
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0" style="background-image: url('img/background-comicu.jpg'); background-size: contain;">
+        <div class="flex flex-col items-center min-h-screen pt-6 sm:justify-center sm:pt-0" style="background-image: url('img/background-comicu.jpg'); background-size: contain;">
             {{ $slot }}
         </div>
         
-        <footer class="footer p-10 bg-neutral-800 opacity-90">
+        <footer class="p-10 footer bg-neutral-800 opacity-90">
        <div class="comicu">
               <a href="" class="flex items-center">
                   <img src="{{ asset('img/comicu-logo.png') }}" class="" width="150" alt="Comicu Logo" />
               </a>
           </div>
             <nav>
-                <header class="footer text-base text-neutral-50">ComicU</header>
+                <header class="text-base footer text-neutral-50">ComicU</header>
                 <a class="link link-hover text-slate-300">About us</a>
                 <a class="link link-hover text-slate-300">Design</a>
                 <a class="link link-hover text-slate-300">Achivement</a>
                 <a class="link link-hover text-slate-300">Cooperation</a>
             </nav>
             <nav>
-                <header class="footer text-base text-neutral-50">Categories</header>
+                <header class="text-base footer text-neutral-50">Categories</header>
                 <a class="link link-hover text-slate-300">Fiction</a>
                 <a class="link link-hover text-slate-300">Histories</a>
                 <a class="link link-hover text-slate-300">Action</a>
                 <a class="link link-hover text-slate-300">Sci-FI</a>
             </nav>
             <nav>
-                <header class="footer text-base text-neutral-50">Transactions</header>
+                <header class="text-base footer text-neutral-50">Transactions</header>
                 <a class="link link-hover text-slate-300">Payment Methods</a>
                 <a class="link link-hover text-slate-300">Refund Policy</a>
                 <a class="link link-hover text-slate-300">Shipping Information </a>
                 <a class="link link-hover text-slate-300">Return Policy </a>
             </nav>
             <nav>
-                <header class="footer text-base text-neutral-50">Others</header>
+                <header class="text-base footer text-neutral-50">Others</header>
                 <a class="link link-hover text-slate-300">Terms of use</a>
                 <a class="link link-hover text-slate-300">Privacy policy</a>
                 <a class="link link-hover text-slate-300">Cookie Policy</a>
                 <a class="link link-hover text-slate-300">Contact Us</a>
             </nav>
         </footer>
-        <footer class="footer px-10 py-4  border-t border-neutral-900 bg-neutral-800 text-base-content">
+        <footer class="px-10 py-4 border-t footer border-neutral-900 bg-neutral-800 text-base-content">
             <aside class="items-center grid-flow-col">
                 <p class="text-neutral-50">
                     © 2023 Copyright Made With   ♥
