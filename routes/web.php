@@ -1,14 +1,15 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\TransactionController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ComicController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\ReviewController;
-use App\Http\Controllers\HomeController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,6 +57,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/review/search', [ReviewController::class,'search'])->name('review.search');
     Route::put('/review/update/{review}', [ReviewController::class, 'update'])->name('review.update');
     Route::delete('/review/{review}', [ReviewController::class, 'destroy'])->name('review.destroy');
+    Route::get('/users/search', [UserController::class, 'search'])->name('user.search');
+    Route::get('/users', [UserController::class, 'index'])->name('user.index');
+    Route::get('/users/create', [UserController::class, 'create'])->name('user.create');
+    Route::post('/users', [UserController::class, 'store'])->name('user.store');
+    Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('user.edit');
+    Route::put('/{user}', [UserController::class, 'update'])->name('user.update');
+    Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('user.destroy');
 });
 
 /*----------------------------------------------
@@ -63,6 +71,5 @@ Google
 ----------------------------------------------*/
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('google-login');
 Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback'])->name('google-callback');
-
 
 require __DIR__.'/auth.php';
