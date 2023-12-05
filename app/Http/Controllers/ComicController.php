@@ -92,10 +92,17 @@ class ComicController extends Controller
      */
     public function update(Request $request, Comic $comic)
     {
+        $comic_photo=$request -> file('comic_photo');
+        $filename = date('Y-m-d' ).$comic_photo->getClientOriginalName();
+        $path = 'comic-photo/'.$filename;
+
+        Storage::disk('public') -> put($path,file_get_contents($comic_photo));
+
         $input = $request->all();
         $comic = $this->comic->find($comic->id);
         $comic->comic_name = $input['comic_name'];
         $comic->synopsis = $input['synopsis'];
+        $comic->comic_photo = $filename;
         $comic->author = $input['author'];
         $comic->stock = $input['stock'];
         $comic->category_id = $input['category_id'];
