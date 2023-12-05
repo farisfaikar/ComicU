@@ -1,7 +1,7 @@
 <x-app-layout>
     <section class="p-5">
         <div class="flex flex-col items-center justify-between w-full gap-2 sm:flex-row">
-            <h2 class="text-2xl font-bold text-center sm:text-left">Comic List</h2>
+            <h2 class="text-2xl font-bold text-center sm:text-left text-white">Comic List</h2>
             <div class="flex flex-col items-center justify-end w-full gap-5 sm:flex-row align-center sm:w-auto">
                 <x-searchbar :action="route('comic.search')" />
                 <a href="{{ route('comic.create') }}" type="button" class="sm:w-auto w-full text-center focus:outline-none text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">
@@ -17,6 +17,7 @@
                     <tr>
                         <th>no</th>
                         <th>comic name</th>
+                        <th>price</th>
                         <th>synopsis</th>
                         <th>comic photo</th>
                         <th>author</th>
@@ -30,10 +31,11 @@
                         <tr class="border-b border-neutral-800">
                             <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"> {{ $comics->firstitem() + $key }} </td>
                             <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"> {{ $comic->comic_name }} </td>
-                            <td> {{ strlen($comic->synopsis) > 100 ? substr($comic->synopsis, 0, 100) . '...' : $comic->synopsis }} </td>
+                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"> Rp. {{ $comic->price }} </td>
+                            <td class="px-6 py-4 font-medium text-gray-900 dark:text-white"> {{ strlen($comic->synopsis) > 100 ? substr($comic->synopsis, 0, 100) . '...' : $comic->synopsis }} </td>
                             <td> <img src="{{ asset('storage/comic-photo/'.$comic->comic_photo) }}" alt="sss" class="w-20"></td>
-                            <td> {{ $comic->author }} </td>
-                            <td class="text-center"> {{ $comic->stock }}</td>
+                            <td class="px-6 py-4 font-medium text-gray-900 dark:text-white"> {{ $comic->author }} </td>
+                            <td class="px-6 py-4 font-medium text-gray-900 dark:text-white text-center"> {{ $comic->stock }}</td>
                             <td class="text-center">
                                 @if ($comic->category_id !== null)
                                     <p>{{ $comic->category->category_name }}</p>

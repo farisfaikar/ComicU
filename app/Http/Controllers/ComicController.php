@@ -49,7 +49,7 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-  
+        
         $comic_photo=$request -> file('comic_photo');
         $filename = date('Y-m-d' ).$comic_photo->getClientOriginalName();
         $path = 'comic-photo/'.$filename;
@@ -57,6 +57,7 @@ class ComicController extends Controller
         Storage::disk('public') -> put($path,file_get_contents($comic_photo));
 
         $data['comic_name'] =$request->comic_name;
+        $data['price'] =$request->price;
         $data['synopsis'] =$request->synopsis;
         $data['author'] =$request->author;
         $data['comic_photo'] =$filename;
@@ -95,6 +96,7 @@ class ComicController extends Controller
         $input = $request->all();
         $comic = $this->comic->find($comic->id);
         $comic->comic_name = $input['comic_name'];
+        $comic->price = $input['price'];
         $comic->synopsis = $input['synopsis'];
         $comic->author = $input['author'];
         $comic->stock = $input['stock'];
