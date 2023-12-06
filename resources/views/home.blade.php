@@ -55,26 +55,33 @@
                     </button>
                 </div>
             </div>
-            <div class="grid grid-cols-1 gap-10 mt-10 lg:grid-cols-4 sm:grid-cols-2 md:grid-cols-3">
+
+            <div class="mt-10 grid grid-cols-1 lg:grid-cols-4 sm:grid-cols-2 md:grid-cols-3 gap-10">
+
                 @foreach ($comics as $comic)
-                    <div class="max-w-sm border rounded-lg shadow bg-neutral-900 border-neutral-800">
+                    <div class="max-w-sm bg-neutral-900 border border-neutral-800 rounded-lg shadow flex flex-col">
                         <a href="#">
-                            <img class="rounded-t-lg" src="https://cdn.gramedia.com/uploads/items/9786020523316_Melangkah_UV_Spot_R4-1.jpg" alt="..." />
+
+                            <img src="{{ asset('storage/comic-photo/'.$comic->comic_photo) }}"alt="sss">
+
                         </a>
                         <div class="p-5">
                             <a href="#">
-                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-neutral-900 dark:text-white">
+                                <h5 class="text-xl font-bold tracking-tight text-neutral-900 dark:text-white">
                                     {{ $comic->comic_name }}
                                 </h5>
                             </a>
                             <p class="mb-3 font-normal text-neutral-700 dark:text-neutral-400">
-                                {{ strlen($comic->synopsis) > 100 ? substr($comic->synopsis, 0, 100) . '...' : $comic->synopsis }}
+                                Rp. {{ strlen($comic->price) > 100 ? substr($comic->price, 0, 100) . '...' : $comic->price }}
                             </p>
 
-                            <a href="#" class="inline-flex items-center py-2 pl-3 pr-3 text-sm font-medium text-center text-white bg-yellow-700 rounded-lg hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">
-                                Add Cart
-                                <svg class="w-4 h-4 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
-                                    <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
+                        </div>
+                        <div class="p-5">
+                            <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-yellow-700 rounded-lg hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">
+                                Read more
+                                <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
+
                                 </svg>
                             </a>
                         </div>
