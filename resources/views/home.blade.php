@@ -56,57 +56,15 @@
                 </div>
             </div>
             <div class="flex justify-center items-center gap-5">
-                <div class="max-w-sm bg-neutral-900/80 border border-neutral-800 rounded-lg shadow flex flex-col">
-                    <a href="">
-                        <img src="{{asset('img/favourite-book.png')}}" width="150">
-                    </a>
-                    <div class="p-5">
-                        <h2 class="text-white text-xl text-center font-bold">Kids</h2>
+                @foreach($categories as $category)
+                    <div class="max-w-sm bg-neutral-900/80 border border-neutral-800 rounded-lg shadow flex flex-col">
+                        <div class="p-5">
+                            <h2 class="text-white text-xl text-center font-bold">{{ $category->category_name }}</h2>
+                        </div>
                     </div>
-                </div>
-                <div class="max-w-sm bg-neutral-900/80 border border-neutral-800 rounded-lg shadow flex flex-col">
-                    <a href="">
-                        <img src="{{asset('img/favourite-book.png')}}" width="150">
-                    </a>
-                    <div class="p-5">
-                        <h2 class="text-white text-xl text-center font-bold">Kids</h2>
-                    </div>
-                </div>
-                <div class="max-w-sm bg-neutral-900/80 border border-neutral-800 rounded-lg shadow flex flex-col">
-                    <a href="">
-                        <img src="{{asset('img/favourite-book.png')}}" width="150">
-                    </a>
-                    <div class="p-5">
-                        <h2 class="text-white text-xl text-center font-bold">Kids</h2>
-                    </div>
-                </div>
-                <div class="max-w-sm bg-neutral-900/80 border border-neutral-800 rounded-lg shadow flex flex-col">
-                    <a href="">
-                        <img src="{{asset('img/favourite-book.png')}}" width="150">
-                    </a>
-                    <div class="p-5">
-                        <h2 class="text-white text-xl text-center font-bold">Kids</h2>
-                    </div>
-                </div>
-                <div class="max-w-sm bg-neutral-900/80 border border-neutral-800 rounded-lg shadow flex flex-col">
-                    <a href="">
-                        <img src="{{asset('img/favourite-book.png')}}" width="150">
-                    </a>
-                    <div class="p-5">
-                        <h2 class="text-white text-xl text-center font-bold">Kids</h2>
-                    </div>
-                </div>
-                <div class="max-w-sm bg-neutral-900/80 border border-neutral-800 rounded-lg shadow flex flex-col">
-                    <a href="">
-                        <img src="{{asset('img/favourite-book.png')}}" width="150">
-                    </a>
-                    <div class="p-5">
-                        <h2 class="text-white text-xl text-center font-bold">Kids</h2>
-                    </div>
-                </div>
+                @endforeach
             </div>
             <div class="mt-10 font-bold text-3xl text-neutral-100">
-                {{-- title --}}
                 <h2>Comic Recommend For You</h2>
             </div>
             <div class="mt-10 grid grid-cols-1 lg:grid-cols-6 sm:grid-cols-2 md:grid-cols-3 gap-10" >
