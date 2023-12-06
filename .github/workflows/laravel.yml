@@ -11,6 +11,19 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    # Setup the database with Docker container
+    services:
+      mysql:
+        image: mysql:latest
+        env:
+          MYSQL_DATABASE: comicu
+          MYSQL_ROOT_PASSWORD: 
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    
     steps:
     - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
       with:
