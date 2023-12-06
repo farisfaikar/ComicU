@@ -40,6 +40,11 @@ jobs:
       run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
     - name: Generate key
       run: php artisan key:generate
+    - name: Debug
+      run: |
+        cat .env
+        docker ps -a
+
     - name: Fresh migrate
       run: php artisan migrate:fresh --seed
     - name: Directory Permissions
