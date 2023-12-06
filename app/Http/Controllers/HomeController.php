@@ -15,6 +15,22 @@ class HomeController extends Controller
         $popu_comics = Comic::all();
         $reviews = Review::all();
         $categories = Category::all();
+
+        // Calculate average stars for each comic
+        $average_stars = Review::select('comic_id', \DB::raw('avg(stars) as average_stars'))
+            ->groupBy('comic_id')
+            ->pluck('average_stars', 'comic_id');
+
+        // Attach the average stars to each comic
+        $rec_comics->each(function ($comic) use ($average_stars) {
+            $comic->average_stars = $average_stars[$comic->id] ?? 0;
+        });
+
+        // Attach the average stars to each comic
+        $popu_comics->each(function ($comic) use ($average_stars) {
+            $comic->average_stars = $average_stars[$comic->id] ?? 0;
+        });
+
         return view('home', compact('rec_comics', 'popu_comics', 'reviews', 'categories'));
     }
 }

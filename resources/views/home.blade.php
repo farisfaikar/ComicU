@@ -89,8 +89,14 @@
                             </a>
                         </div>
                         <div class="pl-5 pt-1 pr-5 flex-1">
-                            <p>
-                                ⭐
+                            <p class="text-white">
+                                @if($rec_comic->average_stars)
+                                    @for ($i = 0; $i < floor($rec_comic->average_stars); $i++)
+                                        ⭐
+                                    @endfor
+                                @else
+                                    ⭐
+                                @endif
                             </p>
                         </div>
                         <div class="pl-5 pt-2 flex-1">
@@ -122,7 +128,7 @@
                         <div class="pl-5 pt-1 pr-5 flex-1">
                             <a href="#">
                                 <h5 class="text-sm font-bold tracking-tight text-neutral-400">
-                                    {{ $rec_comic->author }}
+                                    {{ $popu_comic->author }}
                                 </h5>
                             </a>
                         </div>
@@ -134,13 +140,19 @@
                             </a>
                         </div>
                         <div class="pl-5 pt-1 pr-5 flex-1">
-                            <p>
-                                ⭐
+                            <p class="text-white">
+                                @if($popu_comic->average_stars)
+                                    @for ($i = 0; $i < floor($popu_comic->average_stars); $i++)
+                                        ⭐
+                                    @endfor
+                                @else
+                                    ⭐
+                                @endif
                             </p>
                         </div>
                         <div class="pl-5 pt-2 flex-1">
                             <p class="mb-3 font-normal text-neutral-700 dark:text-neutral-400">
-                                Rp. {{ $rec_comic->price}}
+                                Rp. {{ $popu_comic->price}}
                             </p>
 
                         </div>
