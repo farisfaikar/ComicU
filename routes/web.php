@@ -47,6 +47,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/comic/delete/{id}', [ComicController::class, 'destroy'])->name('comic.destroy');
     Route::get('/comic/{id}/edit', [ComicController::class,'edit'])->name('comic.edit');
     Route::get('/comic/search', [ComicController::class,'search'])->name('comic.search');
+    Route::get('comic/export/excel', [ComicController::class, 'exportExcel'])->name('export-comic');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
