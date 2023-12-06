@@ -36,11 +36,74 @@
                     placeholder="Enter author here" required>
             </div>
             <div class="mb-6">
-                <label class="bblock mb-2 text-md font-large text-neutral-900 dark:text-white" for="file_input">Upload image</label>
-                <input
-                    class="block w-full text-sm text-neutral-900 border border-gray-300 rounded-lg cursor-pointer bg-neutral-900 dark:text-gray-400 focus:outline-none dark:bg-neutral-900 dark:border-gray-600 dark:placeholder-gray-400"
-                    id="file_input" type="file" id="inputComicPhoto" name="comic_photo">
+                <h2 class="block mb-2 text-md font-large text-neutral-900 dark:text-white">Comic Cover</h2>
+                <div class="mx-auto bg-neutral-700 rounded-lg shadow-md overflow-hidden items-center">
+                    <input id="upload" name="comic_photo" type="file" class="hidden" />
+                    <div class="p-4">
+                        <div id="image-preview" class="p-6 bg-neutral-700 border-dashed border-2 border-neutral-400 rounded-lg items-center mx-auto text-center cursor-pointer">
+                            <label for="upload" class="cursor-pointer">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-neutral-50 mx-auto mb-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
+                                </svg>
+                                <h5 class="mb-2 text-xl font-bold tracking-tight text-neutral-50">Upload picture</h5>
+                                <p class="font-normal text-sm text-neutral-300 md:px-6">Choose photo size should be less than <b class="text-neutral-200">2mb</b></p>
+                                <p class="font-normal text-sm text-neutral-300 md:px-6">and should be in <b class="text-neutral-200">JPG, PNG, or GIF</b> format.</p>
+                                <span id="filename" class="text-neutral-200 bg-neutral-200 z-50"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+            <script>
+                const uploadInput = document.getElementById('upload');
+                const filenameLabel = document.getElementById('filename');
+                const imagePreview = document.getElementById('image-preview');
+
+                // Check if the event listener has been added before
+                let isEventListenerAdded = false;
+
+                uploadInput.addEventListener('change', (event) => {
+                    const file = event.target.files[0];
+
+                    if (file) {
+                        filenameLabel.textContent = file.name;
+
+                        const reader = new FileReader();
+                        reader.onload = (e) => {
+                            imagePreview.innerHTML =
+                                <img src="${e.target.result}" class="max-h-48 rounded-lg mx-auto" alt="Image preview" />;
+                            imagePreview.classList.remove('border-dashed', 'border-2', 'border-neutral-400');
+
+                            // Add event listener for image preview only once
+                            if (!isEventListenerAdded) {
+                                imagePreview.addEventListener('click', () => {
+                                    uploadInput.click();
+                                });
+
+                                isEventListenerAdded = true;
+                            }
+                        };
+                        reader.readAsDataURL(file);
+                    } else {
+                        filenameLabel.textContent = '';
+                        imagePreview.innerHTML =
+                            <div class="bg-neutral-200 h-48 rounded-lg flex items-center justify-center text-neutral-500">No image preview</div>;
+                        imagePreview.classList.add('border-dashed', 'border-2', 'border-neutral-400');
+
+                        // Remove the event listener when there's no image
+                        imagePreview.removeEventListener('click', () => {
+                            uploadInput.click();
+                        });
+
+                        isEventListenerAdded = false;
+                    }
+                });
+
+                uploadInput.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                });
+            </script>
             <div class="mb-6">
                 <label for="inputStock"
                     class="block mb-2 text-md font-large text-neutral-900 dark:text-white">Stock</label>
