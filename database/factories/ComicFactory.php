@@ -19,7 +19,7 @@ class ComicFactory extends Factory
     {
         return [
             'comic_name' => fake()->name(),
-            'price' => fake()->price(),
+            'price' => fake()->numberBetween(10000, 1000000),
             'synopsis' => fake()->realTextBetween(500, 1000),
             'author' => fake()->name(),
             'stock' => fake()->numberBetween(0, 100),
