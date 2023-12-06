@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ExportComic;
 use App\Models\Category;
 use App\Models\Comic;
 use Illuminate\Http\Request;
@@ -10,6 +11,7 @@ use App\Http\Requests\UpdateComicRequest;
 use Illuminate\Support\Facades\DB;
 use Termwind\Components\Dd;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ComicController extends Controller
 {
@@ -32,6 +34,10 @@ class ComicController extends Controller
     {
         $comics = Comic::paginate(10);
         return view("comic.index-comic", compact("comics"));
+    }
+    
+    public function exportExcel(){
+        return Excel::download(new ExportComic, "comic_list.xlsx");
     }
 
     /**
