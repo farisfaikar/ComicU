@@ -1,12 +1,12 @@
 <x-app-layout>
-    <div class="flex flex-col items-center gap-5 w-full mt-10 p-5">
-        <h2 class="text-2xl font-bold">
-            Edit Comic
-        </h2>
-        <form method="post" action="{{ route('comic.update', $comic) }}" enctype="multipart/form-data"
-            class="w-full sm:w max-w-2xl">
-            @method('put')
-            @csrf
+    <div class="flex flex-col items-center gap-5 w-full p-5" style="background-image: url('/img/background-comicu.jpg'); background-size: contain;">
+        <div class="bg-neutral-900 p-8 rounded-lg w-full max-w-3xl">
+            <h2 class="text-2xl text-center mb-5 font-bold">
+                Edit Comic
+            </h2>
+            <form method="post" action="{{ route('comic.update', $comic) }}" enctype="multipart/form-data" class="w-full sm:w max-w-3xl">
+                @method('put')
+                @csrf
 
             <div class="mb-6">
                 <label for="inputComicName" class="block mb-2 text-md font-large text-neutral-900 dark:text-white">Comic
@@ -140,10 +140,10 @@
                 </select>
             </div>
 
-            <button type="submit"
-                class="focus:outline-none text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">
-                Submit
-            </button>
-        </form>
+                <button type="submit" class="focus:outline-none text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">
+                    Submit
+                </button>
+            </form>
+        </div>
     </div>
 </x-app-layout>
