@@ -55,28 +55,108 @@
                     </button>
                 </div>
             </div>
-
-            <div class="mt-10 grid grid-cols-1 lg:grid-cols-4 sm:grid-cols-2 md:grid-cols-3 gap-10">
-
-                @foreach ($comics as $comic)
+            <div class="flex justify-center items-center gap-5">
+                @foreach($categories as $category)
+                    <div class="max-w-sm bg-neutral-900/80 border border-neutral-800 rounded-lg shadow flex flex-col">
+                        <div class="p-5">
+                            <h2 class="text-white text-xl text-center font-bold">{{ $category->category_name }}</h2>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+            <div class="mt-10 font-bold text-3xl text-neutral-100">
+                <h2>Comic Recommend For You</h2>
+            </div>
+            <div class="mt-10 grid grid-cols-1 lg:grid-cols-6 sm:grid-cols-2 md:grid-cols-3 gap-10" >
+                @foreach ($rec_comics as $rec_comic)
                     <div class="max-w-sm bg-neutral-900 border border-neutral-800 rounded-lg shadow flex flex-col">
-                        <a href="#">
-
-                            <img src="{{ asset('storage/comic-photo/'.$comic->comic_photo) }}"alt="sss">
+                        <a href="#" class="overflow-hidden">
+                            <img class="rounded-t-lg object-fill h-[300px]" src="{{ asset('storage/comic-photo/'.$rec_comic->comic_photo) }}" alt="..."/>
 
                         </a>
-                        <div class="p-5">
+                        <div class="pl-5 pt-1 pr-5 flex-1">
                             <a href="#">
-                                <h5 class="text-xl font-bold tracking-tight text-neutral-900 dark:text-white">
-                                    {{ $comic->comic_name }}
+                                <h5 class="text-sm font-bold tracking-tight text-neutral-400">
+                                    {{ $rec_comic->author }}
                                 </h5>
                             </a>
+                        </div>
+                        <div class="pl-5 pt-3 pr-5 flex-1">
+                            <a href="#">
+                                <h5 class="text-xl font-bold tracking-tight text-neutral-900 dark:text-white">
+                                    {{ $rec_comic->comic_name }}
+                                </h5>
+                            </a>
+                        </div>
+                        <div class="pl-5 pt-1 pr-5 flex-1">
+                            <p class="text-white">
+                                @if($rec_comic->average_stars)
+                                    @for ($i = 0; $i < floor($rec_comic->average_stars); $i++)
+                                        ⭐
+                                    @endfor
+                                @else
+                                    ⭐
+                                @endif
+                            </p>
+                        </div>
+                        <div class="pl-5 pt-2 flex-1">
                             <p class="mb-3 font-normal text-neutral-700 dark:text-neutral-400">
-                                Rp. {{ strlen($comic->price) > 100 ? substr($comic->price, 0, 100) . '...' : $comic->price }}
+                                Rp. {{ $rec_comic->price}}
+                            </p>
+                        </div>
+                        <div class="pl-5 pr-5 pb-5">
+                            <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-yellow-700 rounded-lg hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">
+                                Read more
+                                <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+            <div class="mt-10 font-bold text-3xl text-neutral-100">
+                {{-- title --}}
+                <h2>Comic Popular Comics</h2>
+            </div>
+            <div class="mt-10 grid grid-cols-1 lg:grid-cols-6 sm:grid-cols-2 md:grid-cols-3 gap-10" >
+                @foreach ($popu_comics as $popu_comic)
+                    <div class="max-w-sm bg-neutral-900 border border-neutral-800 rounded-lg shadow flex flex-col">
+                        <a href="#" class="overflow-hidden">
+                            <img class="rounded-t-lg object-fill h-[300px]" src="{{ asset('storage/comic-photo/'.$popu_comic->comic_photo) }}" alt="..."/>
+                        </a>
+                        <div class="pl-5 pt-1 pr-5 flex-1">
+                            <a href="#">
+                                <h5 class="text-sm font-bold tracking-tight text-neutral-400">
+                                    {{ $popu_comic->author }}
+                                </h5>
+                            </a>
+                        </div>
+                        <div class="pl-5 pt-3 pr-5 flex-1">
+                            <a href="#">
+                                <h5 class="text-xl font-bold tracking-tight text-neutral-900 dark:text-white">
+                                    {{ $popu_comic->comic_name }}
+                                </h5>
+                            </a>
+                        </div>
+                        <div class="pl-5 pt-1 pr-5 flex-1">
+                            <p class="text-white">
+                                @if($popu_comic->average_stars)
+                                    @for ($i = 0; $i < floor($popu_comic->average_stars); $i++)
+                                        ⭐
+                                    @endfor
+                                @else
+                                    ⭐
+                                @endif
+                            </p>
+                        </div>
+                        <div class="pl-5 pt-2 flex-1">
+                            <p class="mb-3 font-normal text-neutral-700 dark:text-neutral-400">
+                                Rp. {{ $popu_comic->price}}
                             </p>
 
                         </div>
-                        <div class="p-5">
+                        <div class="pl-5 pr-5 pb-5">
                             <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-yellow-700 rounded-lg hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">
                                 Read more
                                 <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
