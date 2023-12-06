@@ -43,11 +43,7 @@ jobs:
     - name: Fresh migrate
       run: php artisan migrate:fresh --seed
     - name: Directory Permissions
-      run: chmod -R 777 storage bootstrap/cache
-    - name: Create Database
-      run: |
-        mkdir -p database
-        touch database/database.sqlite
+      run: sudo chown -R runner:runner /home/runner/work/ | sudo chmod -R 777 /home/runner/work/
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
         DB_HOST: mysql
