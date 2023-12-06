@@ -1,11 +1,13 @@
 <!-- resources/views/users/edit.blade.php -->
 
 <x-app-layout>
-    <div class="flex flex-col items-center gap-5 w-full mt-10 p-5">
-        <h2 class="text-2xl font-bold">
-            Edit User
-        </h2>
-        <form method="post" action="{{ route('user.update', $user->id) }}" class="w-full sm:w max-w-2xl">
+    <div class="flex flex-col items-center gap-5 w-full p-5" style="background-image: url('/img/background-comicu.jpg'); background-size: contain;">
+        <div class="bg-neutral-900 p-8 rounded-lg">
+
+            <h2 class="text-2xl font-bold text-center mb-3">
+                Edit User
+            </h2>
+            <form method="post" action="{{ route('user.update', $user->id) }}" class="w-full sm:w max-w-2xl">
             @csrf
             @method('put')
 
@@ -30,10 +32,11 @@
             </div>
 
             <!-- Add other fields as needed -->
-
+            
             <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                 Update User
             </button>
         </form>
+    </div>
     </div>
 </x-app-layout>
