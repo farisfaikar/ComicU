@@ -93,25 +93,34 @@ class ComicController extends Controller
      */
     public function update(Request $request, Comic $comic)
     {
-        $comic_photo=$request -> file('comic_photo');
-        $filename = date('Y-m-d' ).$comic_photo->getClientOriginalName();
-        $path = 'comic-photo/'.$filename;
-
-        Storage::disk('public') -> put($path,file_get_contents($comic_photo));
-
+        $comic_photo = $request->file('comic_photo');
+    
+        // Check if a new image is uploaded
+        if ($comic_photo) {
+            $filename = date('Y-m-d') . $comic_photo->getClientOriginalName();
+            $path = 'comic-photo/' . $filename;
+    
+            // Store the new image
+            Storage::disk('public')->put($path, file_get_contents($comic_photo));
+        } else {
+            // No new image uploaded, use the existing image
+            $filename = $comic->comic_photo;
+        }
+    
         $input = $request->all();
         $comic = $this->comic->find($comic->id);
         $comic->comic_name = $input['comic_name'];
         $comic->price = $input['price'];
         $comic->synopsis = $input['synopsis'];
-        $comic->comic_photo = $filename;
+        $comic->comic_photo = $filename; // Use the new or existing filename
         $comic->author = $input['author'];
         $comic->stock = $input['stock'];
         $comic->category_id = $input['category_id'];
         $comic->save();
-        
+    
         return redirect()->route('comic.index');
     }
+    
 
     /**
      * Remove the specified resource from storage.

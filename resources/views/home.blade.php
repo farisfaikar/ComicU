@@ -62,7 +62,7 @@
                     <div class="max-w-sm bg-neutral-900 border border-neutral-800 rounded-lg shadow flex flex-col">
                         <a href="#">
 
-                            <img class="rounded-t-lg" src="{{asset($comic->comic_photo)}}/400x600" alt="..." />
+                            <img src="{{ asset('storage/comic-photo/'.$comic->comic_photo) }}"alt="sss">
 
                         </a>
                         <div class="pl-5 pt-5 flex-1">
