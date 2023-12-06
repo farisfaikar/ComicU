@@ -8,8 +8,8 @@
         <div class="flex justify-between items-center ">
             <div class="flex items-center w-full">
                 <x-searchbar :action="route('comic.search')" />  
+                <a href="{{ route('export-comic')}}" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm text-center px-2.5 py-2.5 me-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">export comic</a>
                 <a href="{{ route('comic.create') }}" type="button" class=" focus:outline-none text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm text-center px-2.5 py-2.5 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">
-
                     Create Comic
                 </a>
             </div>
