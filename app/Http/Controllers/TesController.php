@@ -45,7 +45,7 @@ class TesController extends Controller
         if($hashed == $request->signature_key){
             if($request->transaction_status == 'capture'){
                 $order = Order::find($request->order_id);
-                $order -> update(['status'=>'Paid']);
+                $order -> update(['status'=>'paid']);
             }
         }
     }
