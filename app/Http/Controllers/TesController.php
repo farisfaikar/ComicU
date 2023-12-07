@@ -34,8 +34,7 @@ class TesController extends Controller
                 'first_name' => $request->name,
                 'last_name' => '',
                 'phone' => $request->phone,
-            ),
-            'enabled_payments' => array('gopay'), // Enable GoPay payment method
+            ),// Enable GoPay payment method
         );
     
         // Generate Snap Token for frontend
