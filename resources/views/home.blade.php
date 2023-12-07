@@ -76,11 +76,11 @@
                     </button>
                 </div>
             </div>
-            <div class="flex flex-wrap items-center justify-center gap-5">
-                @foreach ($categories as $category)
-                    <div class="flex flex-col max-w-sm border rounded-lg shadow bg-neutral-900/80 border-neutral-800">
-                        <div class="p-2 sm:p-5">
-                            <h2 class="text-lg font-bold text-center text-white sm:text-xl">{{ $category->category_name }}</h2>
+            <div class="relative justify-center items-center grid grid-cols-2 lg:grid-cols-3 gap-5">
+                @foreach($categories as $category)
+                    <div class="max-w-sm bg-neutral-900/90 border border-neutral-600 rounded-lg shadow flex flex-col">
+                        <div class="p-5">
+                            <h2 class="text-white text-xl text-center font-bold">{{ $category->category_name }}</h2>
                         </div>
                     </div>
                 @endforeach
@@ -88,11 +88,11 @@
             <div class="mt-5 text-3xl font-bold text-neutral-100">
                 <h2>Comic Recommend For You</h2>
             </div>
-            <div class="grid grid-cols-1 gap-10 mt-10 lg:grid-cols-6 sm:grid-cols-2 md:grid-cols-3">
+            <div class="relative mt-10 grid grid-cols-2 lg:grid-cols-6 sm:grid-cols-2 md:grid-cols-3 gap-10" >
                 @foreach ($rec_comics as $rec_comic)
                     <div class="flex flex-col max-w-sm border rounded-lg shadow bg-neutral-900 border-neutral-800">
                         <a href="#" class="overflow-hidden">
-                            <img class="rounded-t-lg object-fill h-[300px]" src="{{ asset('storage/comic-photo/' . $rec_comic->comic_photo) }}" alt="..." />
+                            <img class="relative w-full h-[300px]" src="{{ asset('storage/comic-photo/'.$rec_comic->comic_photo) }}" alt="..."/>
 
                         </a>
                         <div class="flex-1 pt-1 pl-5 pr-5">
@@ -138,13 +138,13 @@
             </div>
             <div class="mt-10 text-3xl font-bold text-neutral-100">
                 {{-- title --}}
-                <h2>Comic Popular Comics</h2>
+                <h2>Popular Comics</h2>
             </div>
-            <div class="grid grid-cols-1 gap-10 mt-10 lg:grid-cols-6 sm:grid-cols-2 md:grid-cols-3">
+            <div class="relative mt-10 grid grid-cols-2 lg:grid-cols-6 sm:grid-cols-2 md:grid-cols-3 gap-10" >
                 @foreach ($popu_comics as $popu_comic)
                     <div class="flex flex-col max-w-sm border rounded-lg shadow bg-neutral-900 border-neutral-800">
                         <a href="#" class="overflow-hidden">
-                            <img class="rounded-t-lg object-fill h-[300px]" src="{{ asset('storage/comic-photo/' . $popu_comic->comic_photo) }}" alt="..." />
+                            <img class="relative w-full h-[300px]" src="{{ asset('storage/comic-photo/'.$popu_comic->comic_photo) }}" alt="..."/>
                         </a>
                         <div class="flex-1 pt-1 pl-5 pr-5">
                             <a href="#">
