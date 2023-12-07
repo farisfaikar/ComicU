@@ -27,7 +27,7 @@ use App\Http\Controllers\UserController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/test', [TesController::class, 'index']);
 Route::post('/checkout', [TesController::class, 'checkout']);
-Route::post('/midtrans-callback', [TesController::class, 'callback']);
+
 
 
 Route::middleware('auth')->group(function () {
