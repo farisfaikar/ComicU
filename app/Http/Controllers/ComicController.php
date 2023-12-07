@@ -64,7 +64,7 @@ class ComicController extends Controller
 
         $data['comic_name'] =$request->comic_name;
         $data['price'] =$request->price;
-        $data['synopsis'] =$request->synopsis;
+        $data['synopsis'] =strip_tags($request->synopsis);
         $data['author'] =$request->author;
         $data['comic_photo'] =$filename;
         $data['stock'] =$request->stock;
@@ -117,7 +117,7 @@ class ComicController extends Controller
         $comic = $this->comic->find($comic->id);
         $comic->comic_name = $input['comic_name'];
         $comic->price = $input['price'];
-        $comic->synopsis = $input['synopsis'];
+        $comic->synopsis = strip_tags($input['synopsis']);
         $comic->comic_photo = $filename; // Use the new or existing filename
         $comic->author = $input['author'];
         $comic->stock = $input['stock'];
