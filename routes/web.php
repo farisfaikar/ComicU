@@ -28,6 +28,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/test', [TesController::class, 'index']);
 Route::post('/checkout', [TesController::class, 'checkout']);
 Route::get('/about', [AboutController::class, 'show'])->name('about');
+Route::get('/comic/detail/{id}', [HomeController::class, 'detail'])->name('comic.detail');
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

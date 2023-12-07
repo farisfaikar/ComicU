@@ -11,7 +11,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-    
+
     <!-- Website Icon -->
     <link rel="icon" href="{{ asset('img/comicu-logo.png') }}">
 
@@ -29,7 +29,7 @@
             <div class="flex items-center gap-5">
                 <a href="{{ route('about') }}" class="font-semibold text-neutral-400 hover:text-neutral-500 focus:outline focus:outline-2 focus:rounded-sm focus:outline-neutral-500">About Us</a>
                 @auth
-                <a href="{{ route('dashboard') }}" class="font-semibold text-neutral-400 hover:text-neutral-500 focus:outline focus:outline-2 focus:rounded-sm focus:outline-neutral-500">Dashboard</a>
+                    <a href="{{ route('dashboard') }}" class="font-semibold text-neutral-400 hover:text-neutral-500 focus:outline focus:outline-2 focus:rounded-sm focus:outline-neutral-500">Dashboard</a>
                 @else
                     <a href="{{ route('login') }}" class="inline-block px-4 py-2 font-semibold bg-transparent border rounded hover:bg-neutral-300 text-neutral-100 hover:text-neutral-900 border-white-500 hover:border-transparent focus:outline-none focus:ring focus:ring-blue-200 focus:ring-offset-neutral-100">
                         Login
@@ -39,51 +39,53 @@
         </div>
     </nav>
 
-    <div class="flex flex-col items-center min-h-screen pt-6 sm:justify-center sm:pt-0" style="background-image: url('img/background-comicu.jpg'); background-size: contain;">
+    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0" style="background-image: url('/img/background-comicu.jpg'); background-size: contain;">
         {{ $slot }}
     </div>
 
-    <footer class="p-10 footer bg-neutral-900 opacity-90">
+
+
+    <footer class="footer p-10 bg-neutral-800 opacity-90">
         <div class="comicu">
             <a href="" class="flex items-center">
                 <img src="{{ asset('img/comicu-logo.png') }}" class="" width="150" alt="Comicu Logo" />
             </a>
         </div>
         <nav>
-            <header class="text-base footer text-neutral-50">ComicU</header>
+            <header class="footer text-base text-neutral-50">ComicU</header>
             <a class="link link-hover text-slate-300">About us</a>
             <a class="link link-hover text-slate-300">Design</a>
             <a class="link link-hover text-slate-300">Achivement</a>
             <a class="link link-hover text-slate-300">Cooperation</a>
         </nav>
         <nav>
-            <header class="text-base footer text-neutral-50">Categories</header>
+            <header class="footer text-base text-neutral-50">Categories</header>
             <a class="link link-hover text-slate-300">Fiction</a>
             <a class="link link-hover text-slate-300">Histories</a>
             <a class="link link-hover text-slate-300">Action</a>
             <a class="link link-hover text-slate-300">Sci-FI</a>
         </nav>
         <nav>
-            <header class="text-base footer text-neutral-50">Transactions</header>
+            <header class="footer text-base text-neutral-50">Transactions</header>
             <a class="link link-hover text-slate-300">Payment Methods</a>
             <a class="link link-hover text-slate-300">Refund Policy</a>
             <a class="link link-hover text-slate-300">Shipping Information </a>
             <a class="link link-hover text-slate-300">Return Policy </a>
         </nav>
         <nav>
-            <header class="text-base footer text-neutral-50">Others</header>
+            <header class="footer text-base text-neutral-50">Others</header>
             <a class="link link-hover text-slate-300">Terms of use</a>
             <a class="link link-hover text-slate-300">Privacy policy</a>
             <a class="link link-hover text-slate-300">Cookie Policy</a>
             <a class="link link-hover text-slate-300">Contact Us</a>
         </nav>
     </footer>
-    <footer class="px-10 py-4 border-t footer border-neutral-950 bg-neutral-900 text-base-content">
+    <footer class="footer px-10 py-4  border-t border-neutral-900 bg-neutral-800 text-base-content">
         <aside class="items-center grid-flow-col">
             <p class="text-neutral-50">
-                © 2023 Copyright Made With ♥
+                © 2023 Copyright Made With ♥  by
             </p>
-            <a class="text-reset text-neutral-50" href="">Comic U</a>
+            <a class="text-reset text-neutral-50" href="https://comicu.eudeka.my.id">Comic U</a>
         </aside>
 
         <nav class="md:place-self-center md:justify-self-end">
