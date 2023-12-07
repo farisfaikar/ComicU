@@ -20,15 +20,15 @@
 </head>
 
 <body class="font-sans antialiased text-neutral-900 bg-neutral-950">
-    <nav class="fixed z-50 flex justify-center w-full bg-neutral-900/80 backdrop-blur-lg">
+    <nav class="fixed z-50 flex justify-center w-full bg-neutral-900">
         <div class="flex items-center justify-between w-full gap-2 px-6 py-2 lg:px-8 max-w-7xl">
             <a href="{{ route('home') }}" class="flex justify-center text-xl align-center">
                 <x-application-logo class="w-16 h-16" />
             </a>
 
             <div class="flex items-center gap-5">
-                <a href="{{ route('about') }}" class="font-semibold text-neutral-400 hover:text-neutral-500 focus:outline focus:outline-2 focus:rounded-sm focus:outline-neutral-500">About Us</a>
                 @auth
+                <a href="{{ route('about') }}" class="font-semibold text-neutral-400 hover:text-neutral-500 focus:outline focus:outline-2 focus:rounded-sm focus:outline-neutral-500">About Us</a>
                 <a href="{{ route('dashboard') }}" class="font-semibold text-neutral-400 hover:text-neutral-500 focus:outline focus:outline-2 focus:rounded-sm focus:outline-neutral-500">Dashboard</a>
                 @else
                     <a href="{{ route('login') }}" class="inline-block px-4 py-2 font-semibold bg-transparent border rounded hover:bg-neutral-300 text-neutral-100 hover:text-neutral-900 border-white-500 hover:border-transparent focus:outline-none focus:ring focus:ring-blue-200 focus:ring-offset-neutral-100">

@@ -57,6 +57,3 @@ jobs:
         DB_USERNAME: root
         DB_PASSWORD:
       run: vendor/bin/phpunit
-
-    - name: NPM Build
-      run: npm install && npm run build

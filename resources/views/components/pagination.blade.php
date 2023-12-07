@@ -11,7 +11,7 @@
                     <!-- Hide the "Previous" button on the first page -->
                 @else
                     <li>
-                        <a href="{{ $paginator->previousPageUrl() }}" rel="prev" class="block px-3 py-2 rounded-l-lg text-neutral-900 bg-neutral-900 border-neutral-900 hover:bg-neutral-700 dark:bg-neutral-900 dark:border-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-white">Previous</a>
+                        <a href="{{ $paginator->previousPageUrl() }}" rel="prev" class="block px-3 py-2 border rounded-l-lg text-neutral-900 bg-neutral-900 border-neutral-900 hover:bg-neutral-700 dark:bg-neutral-900 dark:border-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-white">Previous</a>
                     </li>
                 @endif
 
@@ -19,7 +19,7 @@
                 @foreach ($elements as $element)
                     {{-- "Three Dots" Separator --}}
                     @if (is_string($element))
-                        <li class="disabled" aria-disabled="true"><span class="block px-3 py-2 cursor-default bg-neutral-700 border-neutral-700 text-neutral-400">{{ $element }}</span></li>
+                        <li class="disabled" aria-disabled="true"><span class="block px-3 py-2 border cursor-not-allowed text-neutral-900 bg-neutral-900 border-neutral-300 dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400">{{ $element }}</span></li>
                     @endif
 
                     {{-- Array of links --}}
@@ -27,11 +27,11 @@
                         @foreach ($element as $page => $url)
                             @if ($page == $paginator->currentPage())
                                 <li>
-                                    <span class="block px-3 py-2 bg-neutral-700 border-neutral-700 text-neutral-400">{{ $page }}</span>
+                                    <span class="block px-3 py-2 border text-neutral-900 bg-neutral-900 border-neutral-900 dark:bg-neutral-900 dark:border-neutral-900 dark:text-neutral-400">{{ $page }}</span>
                                 </li>
                             @else
                                 <li>
-                                    <a href="{{ $url }}" class="block px-3 py-2 text-neutral-900 bg-neutral-900 border-neutral-900 hover:bg-neutral-900 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-white">{{ $page }}</a>
+                                    <a href="{{ $url }}" class="block px-3 py-2 border text-neutral-900 bg-neutral-900 border-neutral-900 hover:bg-neutral-900 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-white">{{ $page }}</a>
                                 </li>
                             @endif
                         @endforeach
@@ -41,10 +41,12 @@
                 {{-- Next Page Link --}}
                 @if ($paginator->hasMorePages())
                     <li>
-                        <a href="{{ $paginator->nextPageUrl() }}" rel="next" class="block px-3 py-2 rounded-r-lg text-neutral-900 bg-neutral-900 border-neutral-900 hover:bg-neutral-900 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-white">Next</a>
+                        <a href="{{ $paginator->nextPageUrl() }}" rel="next" class="block px-3 py-2 border rounded-r-lg text-neutral-900 bg-neutral-900 border-neutral-900 hover:bg-neutral-900 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-white">Next</a>
                     </li>
                 @else
-                    <!-- Hide the "Next" button on the last page -->
+                    <li class="disabled" aria-disabled="true">
+                        <span class="block px-3 py-2 border rounded-r-lg cursor-not-allowed text-neutral-900 bg-neutral-900 border-neutral-300 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">Next</span>
+                    </li>
                 @endif
             </ul>
         </div>

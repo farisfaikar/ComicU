@@ -1,7 +1,7 @@
 <x-guest-layout>
     <div class="relative min-h-screen my-12 bg-center bg-dots-darker selection:bg-neutral-500 selection:text-white">
         <div class="flex flex-col gap-5 p-6 mx-auto mt-12 max-w-7xl lg:p-8">
-            <div class="flex justify-start px-5 py-10 rounded-lg bg-neutral-900">
+            <div class="flex justify-start p-4 rounded-lg bg-neutral-900">
                 <div class="w-full">
                     <h2 class="text-4xl font-extrabold text-neutral-100 dark:text-white sm:text-5xl">
                         About Us

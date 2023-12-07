@@ -27,7 +27,8 @@ use App\Http\Controllers\AboutController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/test', [TesController::class, 'index']);
 Route::post('/checkout', [TesController::class, 'checkout']);
-Route::get('/about', [AboutController::class, 'show'])->name('about');
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -70,6 +71,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('user.edit');
     Route::put('/{user}', [UserController::class, 'update'])->name('user.update');
     Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('user.destroy');
+    Route::get('/about', [AboutController::class, 'show'])->name('about');
 });
 
 /*----------------------------------------------
