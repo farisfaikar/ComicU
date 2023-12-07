@@ -9,7 +9,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\TesController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AboutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +25,9 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/test', [TesController::class, 'index']);
+Route::post('/checkout', [TesController::class, 'checkout']);
+Route::get('/about', [AboutController::class, 'show'])->name('about');
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -47,6 +52,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/comic/delete/{id}', [ComicController::class, 'destroy'])->name('comic.destroy');
     Route::get('/comic/{id}/edit', [ComicController::class,'edit'])->name('comic.edit');
     Route::get('/comic/search', [ComicController::class,'search'])->name('comic.search');
+    Route::get('comic/export/excel', [ComicController::class, 'exportExcel'])->name('export-comic');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
