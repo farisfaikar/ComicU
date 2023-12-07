@@ -20,7 +20,7 @@
 </head>
 
 <body class="font-sans antialiased text-neutral-900 bg-neutral-950">
-    <nav class="fixed z-50 flex justify-center w-full bg-neutral-900">
+    <nav class="fixed z-50 flex justify-center w-full bg-neutral-900/80 backdrop-blur-lg">
         <div class="flex items-center justify-between w-full gap-2 px-6 py-2 lg:px-8 max-w-7xl">
             <a href="{{ route('home') }}" class="flex justify-center text-xl align-center">
                 <x-application-logo class="w-16 h-16" />
