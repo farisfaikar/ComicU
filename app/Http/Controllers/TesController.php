@@ -50,8 +50,7 @@ class TesController extends Controller
             ),
             'payment_type' => 'gopay',
             'gopay' => array(
-                'enable_callback' => true,                // optional
-                'callback_url' => route('callback'),  // optional
+                'enable_callback' => true,                // optional // optional
             )
         );
     
