@@ -30,7 +30,6 @@ class TesController extends Controller
                 'order_id' => $order->id,
                 'gross_amount' => $order->total_price,
             ),
-            'payment_type' => 'gopay',
             'customer_details' => array(
                 'first_name' => $request->name,
                 'last_name' => '',
@@ -41,24 +40,11 @@ class TesController extends Controller
     
         // Generate Snap Token for frontend
         $snapToken = \Midtrans\Snap::getSnapToken($params);
-    
-        // Charge GoPay
-        $gopayParams = array(
-            'transaction_details' => array(
-                'order_id' => $order->id,
-                'gross_amount' => $order->total_price,
-            ),
-            'payment_type' => 'gopay',
-            'gopay' => array(
-                'enable_callback' => true,                // optional // optional
-            )
-        );
-    
-        $gopayResponse = \Midtrans\CoreApi::charge($gopayParams);
+
     
         // You can handle the $gopayResponse as needed (e.g., log or process the response)
     
-        return view('test.checkout', compact('snapToken', 'order','gopayResponse'));
+        return view('test.checkout', compact('snapToken', 'order'));
     }
 
     public function callback(Request $request)
