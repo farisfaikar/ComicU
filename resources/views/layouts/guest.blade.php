@@ -11,6 +11,9 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    
+    <!-- Website Icon -->
+    <link rel="icon" href="{{ asset('img/comicu-logo.png') }}">
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -22,50 +25,11 @@
             <a href="{{ route('home') }}" class="flex justify-center text-xl align-center">
                 <x-application-logo class="w-16 h-16" />
             </a>
-            <div class="w-10/12 search-navbar">
-                <form>
-                    <div class="flex">
-                        <label for="search-dropdown" class="text-sm font-medium sr-only blockmb-2 text-neutral-900 dark:text-white">Your Email</label>
-                        <button id="dropdown-button" data-dropdown-toggle="dropdown" class="flex-shrink-0 z-30 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-neutral-900 bg-neutral-100 border border-neutral-300 rounded-s-lg hover:bg-neutral-200 focus:ring-4 focus:outline-none focus:ring-neutral-100 dark:bg-amber-700 dark:hover:bg-amber-600 dark:focus:ring-neutral-700 dark:text-white dark:border-neutral-600" type="button">All categories
-                            <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
-                            </svg>
-                        </button>
-                        <div id="dropdown" class="z-30 hidden bg-white divide-y rounded-lg shadow divide-amber-100 w-44 dark:bg-amber-600">
-                            <ul class="py-2 text-sm text-amber-700 dark:text-neutral-200" aria-labelledby="dropdown-button">
-                                <li>
-                                    <button type="button" class="inline-flex w-full px-4 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-600 dark:hover:text-white">Fiction</button>
-                                </li>
-                                <li>
-                                    <button type="button" class="inline-flex w-full px-4 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-600 dark:hover:text-white">History</button>
-                                </li>
-                                <li>
-                                    <button type="button" class="inline-flex w-full px-4 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-600 dark:hover:text-white">Action</button>
-                                </li>
-                                <li>
-                                    <button type="button" class="inline-flex w-full px-4 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-600 dark:hover:text-white">Romance</button>
-                                </li>
-                                <li>
-                                    <button type="button" class="inline-flex w-full px-4 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-600 dark:hover:text-white">Sci-Fi</button>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="relative w-full">
-                            <input type="search" id="search-dropdown" class="block p-2.5 w-full z-20 text-sm text-neutral-900 bg-neutral-50 rounded-e-lg border-s-neutral-50 border-s-2 border border-neutral-300 focus:ring-amber-700 focus:border-amber-700 dark:bg-neutral-700 dark:border-s-neutral-700  dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:border-amber-500" placeholder="Search Fiction, History, Action, Romance, Sci-Fi..." required>
-                            <button type="submit" class="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-amber-700 rounded-e-lg border border-amber-700 hover:bg-amber-800 focus:ring-4 focus:outline-none focus:ring-amber-300 dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-blue-800">
-                                <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                                </svg>
-                                <span class="sr-only">Search</span>
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
 
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-5">
                 @auth
-                    <a href="{{ route('dashboard') }}" class="font-semibold text-neutral-400 hover:text-neutral-500 focus:outline focus:outline-2 focus:rounded-sm focus:outline-neutral-500">Dashboard</a>
+                <a href="{{ route('about') }}" class="font-semibold text-neutral-400 hover:text-neutral-500 focus:outline focus:outline-2 focus:rounded-sm focus:outline-neutral-500">About Us</a>
+                <a href="{{ route('dashboard') }}" class="font-semibold text-neutral-400 hover:text-neutral-500 focus:outline focus:outline-2 focus:rounded-sm focus:outline-neutral-500">Dashboard</a>
                 @else
                     <a href="{{ route('login') }}" class="inline-block px-4 py-2 font-semibold bg-transparent border rounded hover:bg-neutral-300 text-neutral-100 hover:text-neutral-900 border-white-500 hover:border-transparent focus:outline-none focus:ring focus:ring-blue-200 focus:ring-offset-neutral-100">
                         Login
