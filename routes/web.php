@@ -64,7 +64,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('user.edit');
     Route::put('/{user}', [UserController::class, 'update'])->name('user.update');
     Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('user.destroy');
+
+    // Detail Comic
+    Route::get('comic_details', [HomeController::class, 'comic_details']);
+    
 });
+
+// comic detail
+Route::get('/comic_details/{id}', [HomeController::class, 'comic_details']);
 
 /*----------------------------------------------
 Google

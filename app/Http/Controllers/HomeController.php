@@ -13,4 +13,12 @@ class HomeController extends Controller
 
         return view('home', compact('comics'));
     }
+
+    // comic detail
+    public function comic_details($id)
+    {
+        $comic=comic::find($id);
+
+        return view('home.comic_details', compact ('comic'));
+    }
 }

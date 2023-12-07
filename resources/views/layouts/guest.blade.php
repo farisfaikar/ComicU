@@ -79,9 +79,11 @@
             </div>
         </nav>
         
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0" style="background-image: url('img/background-comicu.jpg'); background-size: contain;">
+        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0" style="background-image: url('/img/background-comicu.jpg'); background-size: contain;">
             {{ $slot }}
         </div>
+
+
         
         <footer class="footer p-10 bg-neutral-800 opacity-90">
        <div class="comicu">
