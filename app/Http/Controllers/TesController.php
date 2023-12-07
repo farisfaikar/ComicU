@@ -29,7 +29,8 @@ class TesController extends Controller
                 'gross_amount' => $order->total_price,
             ),
             'customer_details' => array(
-                'name' => $request->name,
+                'firt_name' => $request->name,
+                'last_name' => '',
                 'phone' => $request->phone,
             ),
         );
