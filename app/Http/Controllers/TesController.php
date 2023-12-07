@@ -28,6 +28,7 @@ class TesController extends Controller
                 'order_id' => $order->id,
                 'gross_amount' => $order->total_price,
             ),
+            'payment_type' => 'gopay',
             'customer_details' => array(
                 'first_name' => $request->name,
                 'last_name' => '',
