@@ -34,11 +34,10 @@ class HomeController extends Controller
         return view('home', compact('rec_comics', 'popu_comics', 'reviews', 'categories'));
     }
 
-    // comic detail
-    public function comic_details($id)
+    public function detail($id)
     {
-        $comic=comic::find($id);
+        $comic = Comic::find($id);
 
-        return view('home.comic_details', compact ('comic'));
+        return view('home.detail-comic', compact('comic'));
     }
 }
