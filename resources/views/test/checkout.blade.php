@@ -42,7 +42,7 @@
     var payButton = document.getElementById('pay-button');
     payButton.addEventListener('click', function () {
       // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token
-      window.snap.pay('{{$snapToken}}', {
+      window.snap.pay('{{$gopayResponse}}', {
         onSuccess: function(result){
           /* You may add your own implementation here */
           alert("payment success!"); console.log(result);
