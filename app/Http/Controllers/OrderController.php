@@ -6,6 +6,7 @@ use App\Models\Comic;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Review;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -18,7 +19,7 @@ class OrderController extends Controller
         $comic = Comic::find($id);
 
         // Calculate average stars for each comic
-        $average_stars = Review::select('comic_id', \DB::raw('avg(stars) as average_stars'))
+        $average_stars = Review::select('comic_id', DB::raw('avg(stars) as average_stars'))
             ->groupBy('comic_id')
             ->pluck('average_stars', 'comic_id');
 
