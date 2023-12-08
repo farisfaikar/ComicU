@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Comic extends Model
 {
@@ -23,4 +24,10 @@ class Comic extends Model
     {
         return $this->hasOne(Category::class, 'id', 'category_id');
     }
+    public function review(): HasMany
+    {
+        return $this->hasMany(Review::class, 'id', 'review_id');
+    }
+    
+    
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ExportComic;
 use App\Models\Category;
 use App\Models\Comic;
 use Illuminate\Http\Request;
@@ -10,6 +11,7 @@ use App\Http\Requests\UpdateComicRequest;
 use Illuminate\Support\Facades\DB;
 use Termwind\Components\Dd;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ComicController extends Controller
 {
@@ -32,6 +34,10 @@ class ComicController extends Controller
     {
         $comics = Comic::paginate(10);
         return view("comic.index-comic", compact("comics"));
+    }
+    
+    public function exportExcel(){
+        return Excel::download(new ExportComic, "comic_list.xlsx");
     }
 
     /**
@@ -58,7 +64,7 @@ class ComicController extends Controller
 
         $data['comic_name'] =$request->comic_name;
         $data['price'] =$request->price;
-        $data['synopsis'] =$request->synopsis;
+        $data['synopsis'] =strip_tags($request->synopsis);
         $data['author'] =$request->author;
         $data['comic_photo'] =$filename;
         $data['stock'] =$request->stock;
@@ -111,7 +117,7 @@ class ComicController extends Controller
         $comic = $this->comic->find($comic->id);
         $comic->comic_name = $input['comic_name'];
         $comic->price = $input['price'];
-        $comic->synopsis = $input['synopsis'];
+        $comic->synopsis = strip_tags($input['synopsis']);
         $comic->comic_photo = $filename; // Use the new or existing filename
         $comic->author = $input['author'];
         $comic->stock = $input['stock'];

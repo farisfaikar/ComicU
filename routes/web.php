@@ -10,6 +10,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +25,11 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/test', [OrderController::class, 'index']);
+Route::post('/checkout', [OrderController::class, 'checkout']);
+Route::get('/invoice', [OrderController::class, 'invoice']);
+Route::get('/about', [AboutController::class, 'show'])->name('about');
+Route::get('/comic/detail/{id}', [HomeController::class, 'detail'])->name('comic.detail');
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -47,6 +54,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/comic/delete/{id}', [ComicController::class, 'destroy'])->name('comic.destroy');
     Route::get('/comic/{id}/edit', [ComicController::class,'edit'])->name('comic.edit');
     Route::get('/comic/search', [ComicController::class,'search'])->name('comic.search');
+    Route::get('comic/export/excel', [ComicController::class, 'exportExcel'])->name('export-comic');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -65,17 +73,16 @@ Route::middleware('auth')->group(function () {
     Route::put('/{user}', [UserController::class, 'update'])->name('user.update');
     Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('user.destroy');
     // Untuk menampilkan komentar
-    Route::get('/comic_details/{id}/comments', 'CommentController@index')->name('comment.index');
+    Route::get('/comic.detail/{id}/comments', 'CommentController@index')->name('comment.index');
 
     // Untuk menyimpan komentar
-    Route::post('/comic_details/{id}/comments', 'CommentController@store')->name('comment.store');
-
-    // Untuk button buy
+    Route::post('/comic.detail/{id}/comments', 'CommentController@store')->name('comment.store');
+    
 
 });
 
-// comic detail
-Route::get('/comic_details/{id}', [HomeController::class, 'comic_details']);
+// Detail Comic
+Route::get('comic.detail-comic', [HomeController::class, 'comic.detail-comic']);
 
 /*----------------------------------------------
 Google
