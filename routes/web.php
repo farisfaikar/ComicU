@@ -70,6 +70,8 @@ Route::middleware('auth')->group(function () {
     // Untuk menyimpan komentar
     Route::post('/comic_details/{id}/comments', 'CommentController@store')->name('comment.store');
 
+    // Untuk button buy
+
 });
 
 // comic detail

@@ -20,8 +20,9 @@ class HomeController extends Controller
     public function comic_details($id)
     {
         $comic=comic::find($id);
+        $review=review::find($id);
 
-        return view('home.comic_details', compact ('comic'));
+        return view('home.comic_details', compact ('comic'),compact('review'));
     }
 
     public function store(Request $request, $comicId)
