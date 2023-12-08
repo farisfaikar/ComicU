@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Review;
 
-class TesController extends Controller
+class OrderController extends Controller
 {
     public function index(){
         return view('test.index');
@@ -32,7 +32,9 @@ class TesController extends Controller
 
     public function checkout(Request $request)
     {
-        $request->request->add(['total_price' => $request->qty * 10000, 'status' => 'unpaid']);
+        $request->request->add([
+         'total_price' => $request->qty,
+         'status' => 'unpaid']);
         $order = order::create($request->all());
     
         // Set your Midtrans Server Key
@@ -49,36 +51,16 @@ class TesController extends Controller
                 'order_id' => $order->id,
                 'gross_amount' => $order->total_price,
             ),
-            'payment_type' => 'gopay',
             'customer_details' => array(
                 'first_name' => $request->name,
                 'last_name' => '',
-                'phone' => $request->phone,
-            ),
-            'enabled_payments' => array('gopay'), // Enable GoPay payment method
+            ),// Enable GoPay payment method
         );
     
         // Generate Snap Token for frontend
         $snapToken = \Midtrans\Snap::getSnapToken($params);
     
-        // Charge GoPay
-        $gopayParams = array(
-            'transaction_details' => array(
-                'order_id' => $order->id,
-                'gross_amount' => $order->total_price,
-            ),
-            'payment_type' => 'gopay',
-            'gopay' => array(
-                'enable_callback' => true,                // optional
-                'callback_url' => route('callback'),  // optional
-            )
-        );
-    
-        $gopayResponse = \Midtrans\CoreApi::charge($gopayParams);
-    
-        // You can handle the $gopayResponse as needed (e.g., log or process the response)
-    
-        return view('test.checkout', compact('snapToken', 'order','gopayResponse'));
+        return view('test.checkout', compact('snapToken', 'order'));
     }
 
     public function callback(Request $request)
@@ -91,5 +73,10 @@ class TesController extends Controller
                 $order -> update(['status'=>'paid']);
             }
         }
+    }
+
+    public function invoice($id){
+        $order = Order::find($id);
+        return view('home', compact('order'));
     }
 }

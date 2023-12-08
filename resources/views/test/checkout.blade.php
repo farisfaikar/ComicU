@@ -18,14 +18,6 @@
         <td>: {{$order->name}}</td>
     </tr>
     <tr>
-        <td>no</td>
-        <td>: {{$order->phone}}</td>
-    </tr>
-    <tr>
-        <td>alamat</td>
-        <td>: {{$order->address}}</td>
-    </tr>
-    <tr>
         <td>qty</td>
         <td>: {{$order->qty}}</td>
     </tr>
@@ -42,10 +34,12 @@
     var payButton = document.getElementById('pay-button');
     payButton.addEventListener('click', function () {
       // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token
-      window.snap.pay('{{$gopayResponse}}', {
+      window.snap.pay('{{$snapToken}}', {
         onSuccess: function(result){
           /* You may add your own implementation here */
-          alert("payment success!"); console.log(result);
+          // 
+          window.location.href ='/' 
+          console.log(result);
         },
         onPending: function(result){
           /* You may add your own implementation here */

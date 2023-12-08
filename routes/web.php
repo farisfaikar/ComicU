@@ -9,9 +9,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TransactionController;
-use App\Http\Controllers\TesController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,9 +69,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('user.edit');
     Route::put('/{user}', [UserController::class, 'update'])->name('user.update');
     Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('user.destroy');
-    Route::get('/order/{id}', [TesController::class, 'order'])->name('order');
-    Route::get('/test', [TesController::class, 'index']);
-    Route::post('/checkout', [TesController::class, 'checkout'])->name('checkout');
+    Route::get('/order/{id}', [OrderController::class, 'order'])->name('order');
+    Route::get('/test', [OrderController::class, 'index']);
+    Route::post('/checkout', [OrderController::class, 'checkout'])->name('checkout');
 });
 
 /*----------------------------------------------
