@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Comic;
 use App\Models\Category;
 use App\Models\Review;
-use Illuminate\Http\Request;
 use App\Models\Comment;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
+
 class HomeController extends Controller
 {
     public function index()
@@ -17,7 +20,7 @@ class HomeController extends Controller
         $categories = Category::all();
 
         // Calculate average stars for each comic
-        $average_stars = Review::select('comic_id', \DB::raw('avg(stars) as average_stars'))
+        $average_stars = Review::select('comic_id', DB::raw('avg(stars) as average_stars'))
             ->groupBy('comic_id')
             ->pluck('average_stars', 'comic_id');
 
