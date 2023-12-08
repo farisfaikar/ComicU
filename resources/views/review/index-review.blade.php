@@ -1,11 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-neutral-800 dark:text-neutral-200 leading-tight">
+        <h2 class="text-xl font-semibold leading-tight text-neutral-800 dark:text-neutral-200">
             {{ __('Review List') }}
         </h2>
     </x-slot>
     <section class="p-5">
-        <div class="flex justify-between items-center w-full">
+        <div class="flex items-center justify-between w-full">
             <div class="flex items-center w-full">
                 <x-searchbar :action="route('review.search')" />    
                 <a href="{{ route('review.create') }}" type="button" class=" focus:outline-none text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm text-center px-2.5 py-2.5 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">
@@ -31,12 +31,16 @@
                 <tbody class="border-b bg-neutral-900 border-neutral-900">
                     @forelse ($reviews as $key => $review)
                         <tr>
-                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"> {{ $reviews-> firstitem() + $key }} </td>
-                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"> {{ $review->title }}</td>
-                            <td> {{ $review->content }} </td>
-                            <td class="text-center"> {{ $review->stars }}</td>
-                            <td class="text-center"> {{ $review->user->name }}</td>
-                            <td class="text-center"> {{ $review->comic->comic_name }}</td>
+                            <td class="px-6 py-4 font-medium text-white"> {{ $reviews-> firstitem() + $key }} </td>
+                            <td class="px-6 py-4 font-medium text-white"> {{ $review->title }}</td>
+                            <td class="px-6 py-4 font-medium text-neutral-500"> {{ $review->content }} </td>
+                            <td class="flex flex-nowrap px-6 py-4 font-medium text-center text-white w-52"> 
+                                @for ($i = 0; $i < $review->stars; $i++)
+                                    ⭐
+                                @endfor
+                            </td>
+                            <td class="px-6 py-4 font-medium text-center text-white"> {{ $review->user->name }}</td>
+                            <td class="px-6 py-4 font-medium text-center text-white"> {{ $review->comic->comic_name }}</td>
                             <td class="flex flex-col items-center justify-end gap-2 text-center sm:flex-row">
                                 <a href="{{ route('review.edit', $review->id) }}" type="button" class="text-blue-700 hover:text-blue-500 border border-blue-500 hover:bg-gray-900 focus:ring-4 focus:outline-none  focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-600 dark:focus:ring-gray-800">
                                     Edit

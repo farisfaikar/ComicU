@@ -32,10 +32,10 @@
                         <tr>
                             <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {{ $transactions->firstitem() + $key }} </td>
-                            <td class="text-center"> {{ $transaction->user->name }}</td>
-                            <td class="text-center"> {{ $transaction->comic->comic_name }}</td>
-                            <td class="text-center"> {{ $transaction->created_at }}</td>
-                            <td class="text-center"> {{ $transaction->updated_at }}</td>
+                            <td class="text-center px-6 py-4 font-medium whitespace-nowrap text-white"> {{ $transaction->user->name }}</td>
+                            <td class="text-center px-6 py-4 font-medium whitespace-nowrap text-white"> {{ $transaction->comic->comic_name }}</td>
+                            <td class="text-center px-6 py-4 font-medium whitespace-nowrap text-neutral-500"> {{ $transaction->created_at }}</td>
+                            <td class="text-center px-6 py-4 font-medium whitespace-nowrap text-neutral-500"> {{ $transaction->updated_at }}</td>
                             <td class="flex flex-col sm:flex-row justify-end items-center gap-2 text-center">
                                 <a href="{{ route('transaction.edit', $transaction->id) }}" type="button"
                                     class="text-blue-700 hover:text-blue-500 border border-blue-500 hover:bg-gray-900 focus:ring-4 focus:outline-none  focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-600 dark:focus:ring-gray-800">
