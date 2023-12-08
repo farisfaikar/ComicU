@@ -35,15 +35,11 @@ class OrderController extends Controller
             'customer_details' => array(
                 'first_name' => $request->name,
                 'last_name' => '',
-                'phone' => $request->phone,
             ),// Enable GoPay payment method
         );
     
         // Generate Snap Token for frontend
         $snapToken = \Midtrans\Snap::getSnapToken($params);
-
-    
-        // You can handle the $gopayResponse as needed (e.g., log or process the response)
     
         return view('test.checkout', compact('snapToken', 'order'));
     }
