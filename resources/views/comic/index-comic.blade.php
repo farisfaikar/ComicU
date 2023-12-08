@@ -34,14 +34,14 @@
                 <tbody class="border-b bg-neutral-900 border-neutral-900">
                     @forelse ($comics as $key => $comic)
                         <tr class="border-b border-neutral-800">
-                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"> {{ $comics->firstitem() + $key }} </td>
-                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"> {{ $comic->comic_name }} </td>
-                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"> Rp. {{ $comic->price }} </td>
+                            <td class="px-6 py-4 font-medium whitespace-nowrap text-white"> {{ $comics->firstitem() + $key }} </td>
+                            <td class="px-6 py-4 font-medium whitespace-nowrap text-white"> {{ $comic->comic_name }} </td>
+                            <td class="px-6 py-4 font-medium whitespace-nowrap text-white"> Rp. {{ $comic->price }} </td>
                             <td class="px-6 py-4 font-medium text-gray-900 dark:text-white"> {{ strlen($comic->synopsis) > 100 ? substr($comic->synopsis, 0, 100) . '...' : $comic->synopsis }} </td>
-                            <td> <img src="{{ asset('storage/comic-photo/'.$comic->comic_photo) }}" alt="sss" class="w-20"></td>
-                            <td class="px-6 py-4 font-medium text-gray-900 dark:text-white"> {{ $comic->author }} </td>
-                            <td class="px-6 py-4 font-medium text-gray-900 dark:text-white text-center"> {{ $comic->stock }}</td>
-                            <td class="text-center">
+                            <td><img src="{{ asset('storage/comic-photo/' . $comic->comic_photo) }}" alt="{{ $comic->comic_name }}" class="w-20"></td>
+                            <td class="px-6 py-4 font-medium text-white"> {{ $comic->author }} </td>
+                            <td class="px-6 py-4 font-medium text-white text-center"> {{ $comic->stock }}</td>
+                            <td class="px-6 py-4 font-medium text-neutral-500 text-center">
                                 @if ($comic->category_id !== null)
                                     <p>{{ $comic->category->category_name }}</p>
                                 @else

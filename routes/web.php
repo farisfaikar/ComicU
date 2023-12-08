@@ -25,9 +25,6 @@ use App\Http\Controllers\OrderController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/test', [OrderController::class, 'index']);
-Route::post('/checkout', [OrderController::class, 'checkout']);
-Route::get('/invoice', [OrderController::class, 'invoice']);
 Route::get('/about', [AboutController::class, 'show'])->name('about');
 Route::get('/comic/detail/{id}', [HomeController::class, 'detail'])->name('comic.detail');
 
@@ -72,6 +69,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('user.edit');
     Route::put('/{user}', [UserController::class, 'update'])->name('user.update');
     Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('user.destroy');
+    Route::get('/order/{id}', [OrderController::class, 'order'])->name('order');
+    Route::get('/test', [OrderController::class, 'index']);
+    Route::post('/checkout', [OrderController::class, 'checkout'])->name('checkout');
 });
 
 /*----------------------------------------------

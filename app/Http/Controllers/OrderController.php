@@ -2,13 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comic;
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Models\Review;
 
 class OrderController extends Controller
 {
     public function index(){
         return view('test.index');
+    }
+
+    public function order(string $id)
+    {
+        $comic = Comic::find($id);
+
+        // Calculate average stars for each comic
+        $average_stars = Review::select('comic_id', \DB::raw('avg(stars) as average_stars'))
+            ->groupBy('comic_id')
+            ->pluck('average_stars', 'comic_id');
+
+        // Attach the average stars to each comic
+        $comic->each(function ($comic) use ($average_stars) {
+            $comic->average_stars = $average_stars[$comic->id] ?? 0;
+        });
+        
+        return view('test.order', compact('comic'));
     }
 
     public function checkout(Request $request)
