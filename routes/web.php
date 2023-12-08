@@ -64,10 +64,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('user.edit');
     Route::put('/{user}', [UserController::class, 'update'])->name('user.update');
     Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('user.destroy');
+    // Untuk menampilkan komentar
+    Route::get('/comic_details/{id}/comments', 'CommentController@index')->name('comment.index');
 
-    // Detail Comic
-    Route::get('comic_details', [HomeController::class, 'comic_details']);
-    
+    // Untuk menyimpan komentar
+    Route::post('/comic_details/{id}/comments', 'CommentController@store')->name('comment.store');
+
 });
 
 // comic detail
