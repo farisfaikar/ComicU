@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="flex flex-col items-center gap-5 w-full  p-24" style="background-image: url('/img/background-comicu.jpg'); background-size: contain;">
         <div class="bg-neutral-900 p-8 rounded-lg w-full max-w-3xl">
-            <h2 class="text-center text-2xl font-bold mb-3">
+            <h2 class="text-center text-2xl font-bold mb-3 text-neutral-900 dark:text-white">
                 Create Transaction
             </h2>
             <form method="post" action="{{ route('transaction.store') }}" enctype="multipart/form-data" class="w-full sm:w max-w-3xl">
