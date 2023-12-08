@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('qty');
+            $table->string('address');
+            $table->integer('phone');
             $table->bigInteger('total_price');
             $table->enum('status',['unpaid','paid']);
             $table->timestamps();

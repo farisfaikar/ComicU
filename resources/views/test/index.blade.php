@@ -19,10 +19,21 @@
                     <input type="qty" id="qty" name="qty" required>
                 </div>
                 <div>
-                    <label for="name" >Your
+                    <label for="name" >
                         nama</label>
                     <input type="name" id="name" name="name"required>
                 </div>
+                <div>
+                    <label for="address" >
+                        address</label>
+                    <input type="address" id="address" name="address"required>
+                </div>
+                <div>
+                    <label for="phone" >
+                        phone</label>
+                    <input type="phone" id="phone" name="phone"required>
+                </div>
+                
                 <button type="submit">bayar</button>
             </form>
         </div>
