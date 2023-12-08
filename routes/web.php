@@ -14,6 +14,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,8 +28,6 @@ use App\Http\Controllers\TransactionController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/test', [TesController::class, 'index']);
-Route::post('/checkout', [TesController::class, 'checkout']);
 Route::get('/about', [AboutController::class, 'show'])->name('about');
 Route::get('/contact', [ContactController::class, 'show'])->name('contact');
 Route::post('/contact-us', [ContactController::class, 'store'])->name('contact.store');
@@ -76,6 +75,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('user.edit');
     Route::put('/{user}', [UserController::class, 'update'])->name('user.update');
     Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('user.destroy');
+    Route::get('/order/{id}', [OrderController::class, 'order'])->name('order');
+    Route::get('/test', [OrderController::class, 'index']);
+    Route::post('/checkout', [OrderController::class, 'checkout'])->name('checkout');
 });
 
 /*----------------------------------------------

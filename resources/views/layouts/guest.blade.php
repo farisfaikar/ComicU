@@ -47,7 +47,7 @@
 
 
 
-    <footer class="footer p-10 bg-neutral-800 opacity-90">
+    <footer class="footer p-10 bg-neutral-900 opacity-90">
         <div class="comicu">
             <a href="" class="flex items-center">
                 <img src="{{ asset('img/comicu-logo.png') }}" class="" width="150" alt="Comicu Logo" />
@@ -82,7 +82,7 @@
             <a class="link link-hover text-slate-300">Contact Us</a>
         </nav>
     </footer>
-    <footer class="footer px-10 py-4  border-t border-neutral-900 bg-neutral-800 text-base-content">
+    <footer class="footer px-10 py-4  border-t border-neutral-900 bg-neutral-900 text-base-content">
         <aside class="items-center grid-flow-col">
             <p class="text-neutral-50">
                 © 2023 Copyright Made With ♥  by

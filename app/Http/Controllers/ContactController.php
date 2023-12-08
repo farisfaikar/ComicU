@@ -42,6 +42,6 @@ class ContactController extends Controller
             // Implementasikan logika pengiriman salinan pesan di sini
         }
 
-        return redirect()->back()->with('success', 'Message sent successfully!');
+        return redirect()->route('home')->with('success', 'Message sent successfully!');
     }
 }
