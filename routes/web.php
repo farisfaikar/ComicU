@@ -78,7 +78,18 @@ Route::middleware('auth')->group(function () {
     Route::get('/order/{id}', [OrderController::class, 'order'])->name('order');
     Route::get('/test', [OrderController::class, 'index']);
     Route::post('/checkout', [OrderController::class, 'checkout'])->name('checkout');
+
+    // Untuk menampilkan komentar
+    Route::get('/comic.detail/{id}/comments', 'CommentController@index')->name('comment.index');
+
+    // Untuk menyimpan komentar
+    Route::post('/comic.detail/{id}/comments', 'CommentController@store')->name('comment.store');
+    
 });
+
+// Detail Comic
+Route::get('comic.detail-comic', [HomeController::class, 'comic.detail-comic']);
+
 
 /*----------------------------------------------
 Google
