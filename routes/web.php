@@ -9,9 +9,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TransactionController;
-use App\Http\Controllers\TesController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,8 +25,9 @@ use App\Http\Controllers\AboutController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/test', [TesController::class, 'index']);
-Route::post('/checkout', [TesController::class, 'checkout']);
+Route::get('/test', [OrderController::class, 'index']);
+Route::post('/checkout', [OrderController::class, 'checkout']);
+Route::get('/invoice', [OrderController::class, 'invoice']);
 Route::get('/about', [AboutController::class, 'show'])->name('about');
 Route::get('/comic/detail/{id}', [HomeController::class, 'detail'])->name('comic.detail');
 

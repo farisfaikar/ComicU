@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Order;
 
-class TesController extends Controller
+class OrderController extends Controller
 {
     public function index(){
         return view('test.index');
@@ -13,7 +13,9 @@ class TesController extends Controller
 
     public function checkout(Request $request)
     {
-        $request->request->add(['total_price' => $request->qty * 10000, 'status' => 'unpaid']);
+        $request->request->add([
+         'total_price' => $request->qty,
+         'status' => 'unpaid']);
         $order = order::create($request->all());
     
         // Set your Midtrans Server Key
@@ -56,5 +58,10 @@ class TesController extends Controller
                 $order -> update(['status'=>'paid']);
             }
         }
+    }
+
+    public function invoice($id){
+        $order = Order::find($id);
+        return view('home', compact('order'));
     }
 }

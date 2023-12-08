@@ -23,20 +23,6 @@
                         nama</label>
                     <input type="name" id="name" name="name"required>
                 </div>
-                <div>
-                    <label for="phone">Your
-                        phone</label>
-                    <input type="name" id="phone" name="phone"
-                      
-                        required>
-                </div>
-                <div>
-                    <label for="address" >Your
-                        address</label>
-                    <input type="name" id="address" name="address"
-                      
-                        required>
-                </div>
                 <button type="submit">bayar</button>
             </form>
         </div>
