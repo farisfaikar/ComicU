@@ -2,7 +2,7 @@
     <div class="flex flex-col items-center gap-5 w-full p-5"
         style="background-image: url('/img/background-comicu.jpg'); background-size: contain;">
         <div class="bg-neutral-900 p-8 rounded-lg w-full max-w-3xl">
-            <h2 class="text-2xl font-bold text-center mb-2">
+            <h2 class="text-2xl font-bold text-center mb-2 text-neutral-900 dark:text-white">
                 Create Comic
             </h2>
             <form method="post" action="{{ route('comic.store') }}" enctype="multipart/form-data"

@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="flex flex-col items-center gap-5 w-full py-24" style="background-image: url('/img/background-comicu.jpg'); background-size: contain;">
         <div class="bg-neutral-900 p-8 rounded-lg w-full max-w-3xl">
-            <h2 class="text-2xl font-bold text-center">
+            <h2 class="text-2xl font-bold text-center text-neutral-900 dark:text-white">
                 Edit Categories
             </h2>
             <form method="POST" action="{{ route('category.update', $category->id) }}" enctype="multipart/form-data" class="w-full sm:w max-w-3xl">
