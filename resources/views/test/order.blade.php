@@ -1,4 +1,6 @@
 <x-guest-layout>
+    <script type="text/javascript" src="https://app.stg.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.client_key') }}"></script>
+
     <section class="max-w-4xl w-full py-20 overflow-hidden bg-white font-poppins dark:bg-neutral-800">
         <div class="px-4 py-4 mx-auto lg:py-8 md:px-6">
             <div class="flex flex-wrap -mx-4">
@@ -37,7 +39,6 @@
                                 <p class="max-w-2xl mb-8 text-neutral-200">
                                     No synopsis provided.
                                 </p>
-
                             @endif
                             <p class="inline-block text-2xl font-semibold text-white">
                                 <span>Rp. {{ $comic->price }}</span>
