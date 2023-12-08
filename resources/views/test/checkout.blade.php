@@ -22,6 +22,14 @@
         <td>: {{$order->qty}}</td>
     </tr>
     <tr>
+        <td>phone</td>
+        <td>: {{$order->phone}}</td>
+    </tr>
+    <tr>
+        <td>addrress</td>
+        <td>: {{$order->address}}</td>
+    </tr>
+    <tr>
         <td>total</td>
         <td>: {{$order->total_price}}</td>
     </tr>

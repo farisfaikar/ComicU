@@ -16,24 +16,28 @@ class CategorySeeder extends Seeder
         $categories = [
             [
                 'category_name' => 'Fiction',
-                'color' => '#FF0000',
+                'color' => 'cyan',
             ],
             [
                 'category_name' => 'History',
-                'color' => '#FFFFFF',
+                'color' => 'blue',
             ],
             [
                 'category_name' => 'Action',
-                'color' => '#FF0000',
+                'color' => 'red',
             ],
             [
                 'category_name' => 'Romance',
-                'color' => '#123456',
+                'color' => 'pink',
             ],
             [
                 'category_name' => 'Sci-Fi',
-                'color' => '#FF00AA',
-            ]
+                'color' => 'purple',
+            ],
+            [
+                'category_name' => 'Comedy',
+                'color' => 'yellow',
+            ],
         ];
 
         foreach ($categories as $category) {

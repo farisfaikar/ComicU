@@ -1,16 +1,19 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TesController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ComicController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TransactionController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\AboutController;
 use App\Http\Controllers\OrderController;
 
 /*
@@ -25,10 +28,10 @@ use App\Http\Controllers\OrderController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/test', [OrderController::class, 'index']);
-Route::post('/checkout', [OrderController::class, 'checkout']);
-Route::get('/invoice', [OrderController::class, 'invoice']);
 Route::get('/about', [AboutController::class, 'show'])->name('about');
+Route::get('/contact', [ContactController::class, 'show'])->name('contact');
+Route::post('/contact-us', [ContactController::class, 'store'])->name('contact.store');
+Route::get('/contacts', [ContactController::class, 'index'])->name('contacts.index');
 Route::get('/comic/detail/{id}', [HomeController::class, 'detail'])->name('comic.detail');
 
 Route::middleware('auth')->group(function () {
@@ -72,6 +75,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('user.edit');
     Route::put('/{user}', [UserController::class, 'update'])->name('user.update');
     Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('user.destroy');
+    Route::get('/order/{id}', [OrderController::class, 'order'])->name('order');
+    Route::get('/test', [OrderController::class, 'index']);
+    Route::post('/checkout', [OrderController::class, 'checkout'])->name('checkout');
 });
 
 /*----------------------------------------------
