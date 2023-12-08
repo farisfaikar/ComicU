@@ -41,7 +41,7 @@
                             <td> <img src="{{ asset('storage/comic-photo/'.$comic->comic_photo) }}" alt="sss" class="w-20"></td>
                             <td class="px-6 py-4 font-medium text-gray-900 dark:text-white"> {{ $comic->author }} </td>
                             <td class="px-6 py-4 font-medium text-gray-900 dark:text-white text-center"> {{ $comic->stock }}</td>
-                            <td class="text-center">
+                            <td class="px-6 py-4 font-medium text-gray-900 dark:text-white text-center">
                                 @if ($comic->category_id !== null)
                                     <p>{{ $comic->category->category_name }}</p>
                                 @else
