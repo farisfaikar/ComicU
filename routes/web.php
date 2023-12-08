@@ -1,17 +1,19 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TesController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ComicController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TransactionController;
-use App\Http\Controllers\TesController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\AboutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +30,9 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/test', [TesController::class, 'index']);
 Route::post('/checkout', [TesController::class, 'checkout']);
 Route::get('/about', [AboutController::class, 'show'])->name('about');
+Route::get('/contact', [ContactController::class, 'show'])->name('contact');
+Route::post('/contact-us', [ContactController::class, 'store'])->name('contact.store');
+Route::get('/contacts', [ContactController::class, 'index'])->name('contacts.index');
 Route::get('/comic/detail/{id}', [HomeController::class, 'detail'])->name('comic.detail');
 
 Route::middleware('auth')->group(function () {
