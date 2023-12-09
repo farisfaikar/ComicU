@@ -121,7 +121,6 @@ class ComicController extends Controller
         $comic->comic_photo = $filename; // Use the new or existing filename
         $comic->author = $input['author'];
         $comic->stock = $input['stock'];
-        $comic->category_id = $input['category_id'];
         $comic->save();
     
         return redirect()->route('comic.index');
