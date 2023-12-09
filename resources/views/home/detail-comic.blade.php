@@ -3,7 +3,7 @@
     <section class="block text-gray-700 body-font overflow-hidden ">
         <div class="container px-5 py-5 mt-24 mx-auto bg-neutral-800/90">
             <div class="lg:w-4/5 mx-auto flex flex-wrap">
-                <img alt="ecommerce" class="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200" src="https://www.whitmorerarebooks.com/pictures/medium/2465.jpg">
+                <img alt="ecommerce" class="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200" src="{{ asset('storage/comic-photo/'.$comic->comic_photo) }}">
                 <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                     {{-- author --}}
                     <h2 class="text-sm title-font text-gray-500 tracking-widest">

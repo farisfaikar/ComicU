@@ -55,6 +55,7 @@ class OrderController extends Controller
                 'first_name' => $request->name,
                 'last_name' => '',
                 'phone' => $request->phone,
+
             ),// Enable GoPay payment method
         );
     
