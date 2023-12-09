@@ -34,6 +34,7 @@ The technology used to develop this application are as follows:
 -   Collaborative: Eraser, Notion
 -   Testing: PHPunit
 -   Code Styling: Prettier
+-   Payment Gateway: Midtrans
 
 ## Installation (For Developers)
 
