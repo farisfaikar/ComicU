@@ -26,11 +26,11 @@ Admin can add, edit, and delete comic data in the database. Admin can add, edit,
 The technology used to develop this application are as follows:
 
 -   Fullstack: Laravel
--   Frontend: Tailwind CSS, Blade, DaisyUI
+-   Frontend: Tailwind CSS, Blade, DaisyUI, Flowbite
 -   Database: MySQL
 -   Authentication: Laravel/Breeze
 -   VCS: Git, GitHub
--   VPS: [To be determined]
+-   VPS: eudeka.my.id
 -   Collaborative: Eraser, Notion
 -   Testing: PHPunit
 -   Code Styling: Prettier
